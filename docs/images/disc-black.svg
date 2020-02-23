@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     preserveAspectRatio="xMidYMid meet" viewBox="0 0 50 50" width="45" height="45">
+    <defs>
+        <path d="M48 25.5C48 37.92 37.92 48 25.5 48C13.08 48 3 37.92 3 25.5C3 13.08 13.08 3 25.5 3C37.92 3 48 13.08 48 25.5Z" id="c1TXuA9rJZ"></path>
+        <radialGradient id="gradientbqmioRCTB" gradientUnits="userSpaceOnUse" cx="25.5" cy="3" dx="25.5" dy="45" r="45">
+            <stop style="stop-color: #444444;stop-opacity: 1" offset="50%"></stop>
+            <stop style="stop-color: #000000;stop-opacity: 1" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g><g><g>
+        <use xlink:href="#c1TXuA9rJZ" opacity="1" fill="url(#gradientbqmioRCTB)"></use>
+        <g>
+            <use xlink:href="#c1TXuA9rJZ" opacity="1" fill-opacity="0" stroke="#a9a9a9" stroke-width="2" stroke-opacity="1"></use>
+        </g>
+    </g></g></g>
+</svg>
