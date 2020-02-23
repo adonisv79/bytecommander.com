@@ -1,0 +1,10 @@
+#main-page-body {
+    position: relative;
+}
+
+#main-page-header {
+    height:120px;
+    border: 2px solid grey;
+    color: white;
+    background-color: dodgerblue;
+}

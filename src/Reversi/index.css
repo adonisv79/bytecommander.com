@@ -1,0 +1,84 @@
+#game-board {
+    height: 100%;
+}
+
+.info-panel {
+    color: black;
+    height: 100%;
+    width: 180px;
+    position: absolute;
+    background-color: lightgrey;
+    left: 0;
+    top: 0;
+}
+
+.info-panel-status {
+    font-weight: bold;
+}
+
+textarea.logs-list {
+    margin-top:10px;
+    margin-bottom:10px;
+    height:160px;
+    width: 170px;
+    border: 1px solid black;
+    font-size: small;
+    resize: none;
+}
+.logs-list li {
+    font-size: small;
+}
+
+.player-bar {
+    padding: 1px;
+    margin: 1px;
+    border: 1px solid black;
+}
+
+.player-bar.current-player {
+    background-color: yellow;
+}
+
+.player-icon {
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+img.disc {
+    height: 45px;
+    width: 45px;
+    margin: 0px;
+    padding: 0px;
+}
+
+div.game-area {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 190px;
+}
+
+table.othello-board {
+    height: 410px;
+    width: 420px;
+    border-color: black;
+    background-color: black;
+    border-width: 10px;
+    padding: 0px;
+}
+
+table.othello-board.white-turn {
+    cursor: url("/images/disc-white.svg") 23 23, auto;
+}
+
+table.othello-board.black-turn {
+    cursor: url("/images/disc-black.svg") 23 23, auto;
+}
+
+td.game-board-tile {
+    height: 50px;
+    width: 50px;
+    margin: 0px;
+    padding: 0px;
+    background-image: url(/images/board-tile.svg);
+    text-align: center;
+}
