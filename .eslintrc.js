@@ -22,6 +22,6 @@ module.exports = {
     'react',
   ],
   rules: {
-    'no-param-reassign': ['error', { props: false, ignorePropertyModificationsFor: ['draft'] }],
+    'no-param-reassign': [2, { props: false }],
   },
 };
