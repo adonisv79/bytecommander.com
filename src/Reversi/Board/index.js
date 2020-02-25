@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+"use strict";
+
+import React, { Component } from 'react';
 
 function BoardTile(props) {
     let token;
     if (props.value) {
-        let fill_color
         if (props.value === 1) {
-            token = <img className="disc" src="/images/disc-white.svg" />
+            token = <img alt={"disc white side up"} className="disc" src={"/images/disc-white.svg"} />;
         } else {
-            token = <img className="disc" src="/images/disc-black.svg" />
+            token = <img alt={"disc black side up"} className="disc" src={"/images/disc-black.svg"} />;
         }
     }
 
@@ -18,28 +19,28 @@ function BoardTile(props) {
                 }}>
             { token }
         </td>
-    )
+    );
 }
 
 export default class Board extends Component {
     render() {
-        let rows = []
+        let rows = [];
         for (let y = 0; y < 8; y++) {
-            let columns = []
+            let columns = [];
             for (let x = 0; x < 8; x++){
                 columns.push(
                     <BoardTile key={'tile_' + x + '_' + y} x={x} y={y} value={this.props.boardTiles[x][y]}
                        onTileClicked={this.props.onTileClicked} />
-                   )
+                   );
             }
-            rows.push(<tr key={'row_' + y}>{columns}</tr>)
+            rows.push(<tr key={'row_' + y}>{columns}</tr>);
         }
 
-        let class_name = 'othello-board'
+        let class_name = 'othello-board';
         if (this.props.currentPlayer === 1) {
-            class_name += ' white-turn'
+            class_name += ' white-turn';
         } else if (this.props.currentPlayer === -1) {
-            class_name += ' black-turn'
+            class_name += ' black-turn';
         }
 
         return (
@@ -50,9 +51,12 @@ export default class Board extends Component {
                     </tbody>
                 </table>
                 <div>
+                    <button onClick={this.props.undoTurn} disabled={this.props.gameHistoryIndex <= 0} >
+                        Undo previous turn
+                    </button>
                     <button onClick={this.props.skipTurn}>Skip turn</button>
                 </div>
             </div>
-        )
+        );
     }
 }

@@ -47,8 +47,8 @@ textarea.logs-list {
 img.disc {
     height: 45px;
     width: 45px;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 div.game-area {
@@ -63,7 +63,7 @@ table.othello-board {
     border-color: black;
     background-color: black;
     border-width: 10px;
-    padding: 0px;
+    padding: 0;
 }
 
 table.othello-board.white-turn {
@@ -77,8 +77,8 @@ table.othello-board.black-turn {
 td.game-board-tile {
     height: 50px;
     width: 50px;
-    margin: 0px;
-    padding: 0px;
-    background-image: url(/images/board-tile.svg);
+    margin: 0;
+    padding: 0;
+    background-image: url("/images/board-tile.svg");
     text-align: center;
 }

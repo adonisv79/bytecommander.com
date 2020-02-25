@@ -1,30 +1,35 @@
-import React, {Component} from 'react'
+"use strict";
+
+import React, {Component} from 'react';
 
 function showActivePlayer(currentPlayer) {
     if (currentPlayer === 1) {
-        return "White"
+        return "White";
     } else {
-        return "Black"
+        return "Black";
     }
 }
 
 function showLogs(logs) {
-    let text = ''
-    const start_index = logs.length>= 10? logs.length -10: 0
+    let text = '';
+    const start_index = logs.length>= 10? logs.length -10: 0;
     for (let i = start_index; i< logs.length; i++) {
-        text += logs[i] + '\n'
+        text += logs[i] + '\n';
     }
-    return <textarea className="logs-list" value={text}/>
+    return <textarea className="logs-list" value={text}/>;
 }
 
 export default class InfoPanel extends Component {
     render () {
-        let white_player_class = 'player-bar', black_player_class = 'player-bar'
+        let white_player_class = 'player-bar',
+          black_player_class = 'player-bar';
+
         if (this.props.currentPlayer === 1) {
-            white_player_class += ' current-player'
+            white_player_class += ' current-player';
         } else if (this.props.currentPlayer === -1) {
-            black_player_class += ' current-player'
+            black_player_class += ' current-player';
         }
+
         return (
             <div className="info-panel">
                 <div>
@@ -48,6 +53,6 @@ export default class InfoPanel extends Component {
                 {showLogs(this.props.logs)}
                 <button onClick={this.props.newGame}>New Game</button>
             </div>
-        )
+        );
     }
 }
