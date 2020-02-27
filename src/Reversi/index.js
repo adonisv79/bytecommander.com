@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Grid } from '@material-ui/core';
 import Board from './Board';
 import InfoPanel from './InfoPanel';
 import Actions from './actions';
@@ -7,7 +8,7 @@ import './index.css';
 let self;
 
 function generateNewGameState() {
-  const new_state = {
+  const newState = {
     logs: [],
     gameHistoryIndex: 0,
     gameHistory: [],
@@ -23,14 +24,14 @@ function generateNewGameState() {
   newBoard[4][3] = -1;
   newBoard[3][4] = -1;
 
-  new_state.gameHistory.push({
+  newState.gameHistory.push({
     turn: 1,
     whiteScore: 2,
     blackScore: 2,
     board_tiles: newBoard,
   });
 
-  return new_state;
+  return newState;
 }
 
 function deepCopy(obj) {
@@ -63,34 +64,34 @@ export default class Reversi extends Component {
 
   onSkipTurn() {
     self.setState((state) => {
-      const new_state = deepCopy(state);
-      const current_history = deepCopy(new_state.gameHistory[new_state.gameHistoryIndex]);
+      const newState = deepCopy(state);
+      const currentHistory = deepCopy(newState.gameHistory[newState.gameHistoryIndex]);
       if (self.currentPlayer() === 1) {
-        self.addLog(current_history.turn + ': White skips his turn');
+        self.addLog(currentHistory.turn + ': White skips his turn');
       } else if (self.currentPlayer() === -1) {
-        self.addLog(current_history.turn + ': Black skips his turn');
+        self.addLog(currentHistory.turn + ': Black skips his turn');
       }
 
-      current_history.turn += 1;
-      self.saveNextGameHistory(current_history);
+      currentHistory.turn += 1;
+      self.saveNextGameHistory(currentHistory);
     });
   }
 
   onUndoMove() {
     self.setState((state) => {
-      const new_state = deepCopy(state);
-      if (new_state.gameHistoryIndex > 0) {
-        new_state.gameHistoryIndex -= 1;
-        new_state.gameHistory.pop();
-        new_state.logs.push('Undoing turn ' + new_state.gameHistory[new_state.gameHistoryIndex].turn);
+      const newState = deepCopy(state);
+      if (newState.gameHistoryIndex > 0) {
+        newState.gameHistoryIndex -= 1;
+        newState.gameHistory.pop();
+        newState.logs.push('Undoing turn ' + newState.gameHistory[newState.gameHistoryIndex].turn);
       }
-      return new_state;
+      return newState;
     });
   }
 
   onTileClicked(x, y) {
     const clonedGameState = deepCopy(self.currentGame());
-    let log_message;
+    let logMessage;
     if (!clonedGameState.board_tiles[x][y]) {
       const captured = Actions.captureTile(clonedGameState.board_tiles, x, y, self.currentPlayer());
       if (captured > 0) {
@@ -98,57 +99,69 @@ export default class Reversi extends Component {
           clonedGameState.board_tiles[x][y] = 1;
           clonedGameState.whiteScore += captured + 1;
           clonedGameState.blackScore -= captured;
-          log_message = clonedGameState.turn + ': White occupies ' + x + ':' + y;
+          logMessage = clonedGameState.turn + ': White occupies ' + x + ':' + y;
         } else {
           clonedGameState.board_tiles[x][y] = -1;
           clonedGameState.whiteScore -= captured;
           clonedGameState.blackScore += captured + 1;
-          log_message = clonedGameState.turn + ': Black occupies ' + x + ':' + y;
+          logMessage = clonedGameState.turn + ': Black occupies ' + x + ':' + y;
         }
         clonedGameState.turn += 1;
         self.saveNextGameHistory(clonedGameState);
       } else {
         self.addLog('Invalid Move at ' + x + ':' + y);
       }
-      self.addLog(log_message);
+      self.addLog(logMessage);
     }
   }
 
   addLog(message) {
     self.setState((state) => {
-      const new_state = deepCopy(state);
-      new_state.logs.push(message);
-      return new_state;
+      const newState = deepCopy(state);
+      newState.logs.push(message);
+      return newState;
     });
   }
 
   saveNextGameHistory(game) {
     self.setState((state) => {
-      const new_state = deepCopy(state);
-      if (!new_state.gameHistory) {
-        new_state.gameHistory = [];
+      const newState = deepCopy(state);
+      if (!newState.gameHistory) {
+        newState.gameHistory = [];
       }
-      new_state.gameHistory.push({...game});
-      if (new_state.gameHistory.length > 5) {
-        new_state.gameHistory.shift();
+      newState.gameHistory.push({...game});
+      if (newState.gameHistory.length > 5) {
+        newState.gameHistory.shift();
       }
-      new_state.gameHistoryIndex = new_state.gameHistory.length - 1;
-      return new_state;
+      newState.gameHistoryIndex = newState.gameHistory.length - 1;
+      return newState;
     });
   }
 
   render() {
     return (
-      <div id="game">
-        <InfoPanel currentPlayer={ self.currentPlayer()} turn={self.currentGame().turn} logs={self.state.logs}
-                   whiteScore={self.currentGame().whiteScore} blackScore={self.currentGame().blackScore}
-         newGame = { self.onNewGame } />
-        <div id="game-board">
-          <Board boardTiles={self.currentGame().board_tiles} gameHistoryIndex={self.state.gameHistoryIndex }
-                 currentPlayer={ self.currentPlayer()} onTileClicked={ self.onTileClicked }
-                 skipTurn={self.onSkipTurn} undoTurn={self.onUndoMove} />
-        </div>
-      </div>
+      <Grid container id="game">
+        <Grid item xs={2} sm={3} md={2} lg={2} xl={1}>
+          <InfoPanel
+            currentPlayer={self.currentPlayer()}
+            turn={self.currentGame().turn}
+            logs={self.state.logs}
+            whiteScore={self.currentGame().whiteScore}
+            blackScore={self.currentGame().blackScore}
+            newGame={self.onNewGame}
+          />
+        </Grid>
+        <Grid item xs={10} sm={9} md={10} lg={10} xl={11}>
+          <Board
+            boardTiles={self.currentGame().board_tiles}
+            gameHistoryIndex={self.state.gameHistoryIndex}
+            currentPlayer={self.currentPlayer()}
+            onTileClicked={self.onTileClicked}
+            skipTurn={self.onSkipTurn}
+            undoTurn={self.onUndoMove}
+          />
+        </Grid>
+      </Grid>
     );
   }
 }

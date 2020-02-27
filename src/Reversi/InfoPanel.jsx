@@ -1,5 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
+import FiberNewIcon from '@material-ui/icons/FiberNew';
+
+function showActivePlayer(currentPlayer) {
+  return currentPlayer === 1 ? 'White' : 'Black';
+}
 
 function showLogs(logs) {
   let text = '';
@@ -14,7 +20,7 @@ export default function InfoPanel(props) {
   const {
     currentPlayer, whiteScore, blackScore, logs, newGame,
   } = props;
-  const txtStatusMessage = 'It is { showActivePlayer(currentPlayer) }\'s turn';
+  const txtStatusMessage = `It is ${showActivePlayer(currentPlayer)}'s turn`;
   const txtWhiteScore = `White Player: ${whiteScore}`;
   const txtBlackScore = `Black Player: ${blackScore}`;
   let whitePlayerClass = 'player-bar';
@@ -26,7 +32,7 @@ export default function InfoPanel(props) {
   }
 
   return (
-    <div className="info-panel">
+    <div id="info-panel">
       <div>
         <h2>REVERSI</h2>
         <p>
@@ -51,7 +57,14 @@ export default function InfoPanel(props) {
       </div>
 
       {showLogs(logs)}
-      <button type="button" onClick={newGame}>New Game</button>
+      <Button
+        variant="contained"
+        color="primary"
+        startIcon={<FiberNewIcon />}
+        onClick={newGame}
+      >
+        New Game
+      </Button>
     </div>
   );
 }

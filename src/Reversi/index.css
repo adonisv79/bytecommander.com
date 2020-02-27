@@ -2,16 +2,6 @@
     height: 100%;
 }
 
-.info-panel {
-    color: black;
-    height: 100%;
-    width: 180px;
-    position: absolute;
-    background-color: lightgrey;
-    left: 0;
-    top: 0;
-}
-
 .info-panel-status {
     font-weight: bold;
 }
@@ -53,7 +43,7 @@ img.disc {
 }
 
 div.game-area {
-    position: absolute;
+    /*position: absolute;*/
     margin-top: 10px;
     margin-left: 190px;
 }

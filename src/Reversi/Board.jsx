@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import Button from '@material-ui/core/Button';
+import UndoIcon from '@material-ui/icons/Undo';
+import SkipNextIcon from '@material-ui/icons/SkipNext';
 
 function BoardTile(props) {
   let token;
@@ -67,10 +69,24 @@ export default function Board(props) {
         </tbody>
       </table>
       <div>
-        <button type="button" onClick={undoTurn} disabled={gameHistoryIndex <= 0}>
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<UndoIcon />}
+          onClick={undoTurn}
+          disabled={gameHistoryIndex <= 0}
+        >
           Undo previous turn
-        </button>
-        <button type="button" onClick={skipTurn}>Skip turn</button>
+        </Button>
+        &nbsp;
+        <Button
+          variant="contained"
+          color="primary"
+          startIcon={<SkipNextIcon />}
+          onClick={skipTurn}
+        >
+          Skip turn
+        </Button>
       </div>
     </div>
   );

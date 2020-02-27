@@ -1,8 +1,9 @@
 import React from 'react';
+import { Grid, Container, Typography } from '@material-ui/core';
 import Reversi from '../Reversi';
 import './index.css';
 
-export default function () {
+function Header() {
   const intro = 'Welcome to my new page! there is not much for now but I plan to start working on my hobbies and '
     + 'share them online. I have always been fascinated by web development since 2000 when the ISP pre-paid cards '
     + 'became famous here. Since then I have tried HTML 4 and CSS but was never a fan of javascript. The only use I '
@@ -12,15 +13,38 @@ export default function () {
     + 'with NodeJS and Javascript (ES6) and other related web technologies. This site aims to become a repository of '
     + 'all my creations! ~Adonis Lee Villamor';
   return (
-    <div>
-      <div id="main-page-header">{intro}</div>
-      <div id="main-page-body">
-        <Reversi />
-      </div>
-      <div>
-        The source code for this site and its contents are freely available at
-        <a href="https://github.com/adonisv79/bytecommander.com">my Github page</a>
-      </div>
-    </div>
+    <Typography variant="body" color="textSecondary" align="center">{intro}</Typography>
+  );
+}
+
+function Footer() {
+  const message = 'The source code for this site and its contents are freely available at\n'
+    + '<a href="https://github.com/adonisv79/bytecommander.com">my Github page</a>';
+  return (
+    <Typography align="center">{ message }</Typography>
+  );
+}
+
+export default function () {
+  return (
+    <Container>
+      <Grid container>
+        <Grid item xs={12}>
+          <Header />
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item>
+          <Typography align="center">
+            <Reversi />
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid item xs={12}>
+          <Footer />
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
