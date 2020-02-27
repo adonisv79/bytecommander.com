@@ -1,7 +1,5 @@
-"use strict";
-
 import React, {Component} from 'react';
-import Board from './Board/index.jsx';
+import Board from './Board';
 import InfoPanel from './InfoPanel';
 import Actions from './actions';
 import './index.css';

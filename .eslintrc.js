@@ -23,5 +23,6 @@ module.exports = {
   ],
   rules: {
     'no-param-reassign': [2, { props: false }],
+    'no-else-return': [2, { allowElseIf: true }],
   },
 };
