@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Container, Typography } from '@material-ui/core';
+import { Grid, Box, Container, Typography } from '@material-ui/core';
 import Reversi from '../Reversi';
 import './index.css';
 
@@ -18,33 +18,42 @@ function Header() {
 }
 
 function Footer() {
-  const message = 'The source code for this site and its contents are freely available at\n'
-    + '<a href="https://github.com/adonisv79/bytecommander.com">my Github page</a>';
+  const link = <a href="https://github.com/adonisv79/bytecommander.com">my Github page</a>;
+  const message = 'The source code for this site and its contents are freely available at\n';
+  const email = <a href="mailto:adonisv79@gmail.com" subject="Re: Bytecommander">adonisv79@gmail.com</a>;
   return (
-    <Typography align="center">{ message }</Typography>
+    <Typography align="center">
+      {message}
+      {link}
+      <Box>
+        Bytecommander™ (2011) is owned and maintained by Adonis Lee Villamor<br />
+        for concerns on this site, please feel free to contact me at {email}
+      </Box>
+    </Typography>
   );
 }
 
 export default function () {
   return (
     <Container>
-      <Grid container>
-        <Grid item xs={12}>
-          <Header />
+      <Box>
+        <Grid container>
+          <Grid item>
+            <Header />
+          </Grid>
         </Grid>
-      </Grid>
-      <Grid container>
+        <hr />
         <Grid item>
           <Typography align="center">
             <Reversi />
           </Typography>
         </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs={12}>
+        <hr />
+        <Grid item>
           <Footer />
         </Grid>
-      </Grid>
+      </Box>
+
     </Container>
   );
 }

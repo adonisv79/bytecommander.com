@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import { Container, Box } from '@material-ui/core';
 import UndoIcon from '@material-ui/icons/Undo';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 
@@ -62,13 +63,15 @@ export default function Board(props) {
   }
 
   return (
-    <div className="game-area">
-      <table className={className}>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
-      <div>
+    <Container align="center" spacing={3}>
+      <Box spacing={3}>
+        <table className={className}>
+          <tbody>
+            {rows}
+          </tbody>
+        </table>
+      </Box>
+      <Box spacing={3}>
         <Button
           variant="contained"
           color="primary"
@@ -87,8 +90,8 @@ export default function Board(props) {
         >
           Skip turn
         </Button>
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 }
 

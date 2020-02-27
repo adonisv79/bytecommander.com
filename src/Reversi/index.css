@@ -9,10 +9,8 @@
 textarea.logs-list {
     margin-top: 10px;
     margin-bottom: 10px;
-    height: 160px;
-    width: 170px;
+    width: 100%;
     border: 1px solid black;
-    font-size: small;
     resize: none;
 }
 

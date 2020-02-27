@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import FiberNewIcon from '@material-ui/icons/FiberNew';
+import { TextareaAutosize } from '@material-ui/core'
 
 function showActivePlayer(currentPlayer) {
   return currentPlayer === 1 ? 'White' : 'Black';
@@ -13,7 +14,7 @@ function showLogs(logs) {
   for (let i = startIndex; i < logs.length; i += 1) {
     text += `${logs[i]}\n`;
   }
-  return <textarea className="logs-list" value={text} />;
+  return <TextareaAutosize className="logs-list" rowsMin="11" value={text} />;
 }
 
 export default function InfoPanel(props) {
@@ -37,7 +38,7 @@ export default function InfoPanel(props) {
         <h2>REVERSI</h2>
         <p>
           The goal is to capture as many areas as possible. For the full instructions, please see
-          <a target="new" href="https://en.wikipedia.org/wiki/Reversi">the Wikipedia guide on Reversi </a>
+          <a target="new" href="https://en.wikipedia.org/wiki/Reversi"> the Wikipedia guide on Reversi </a>
         </p>
       </div>
       <div className="info-panel-status">
@@ -63,7 +64,7 @@ export default function InfoPanel(props) {
         startIcon={<FiberNewIcon />}
         onClick={newGame}
       >
-        New Game
+        Start New Game
       </Button>
     </div>
   );
