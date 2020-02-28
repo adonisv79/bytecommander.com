@@ -55,7 +55,7 @@ export default function Board(props) {
     rows.push(<tr>{columns}</tr>);
   }
 
-  let className = 'othello-board';
+  let className = 'reversi-board';
   if (currentPlayer === 1) {
     className += ' white-turn';
   } else if (currentPlayer === -1) {
@@ -63,9 +63,9 @@ export default function Board(props) {
   }
 
   return (
-    <Container align="center" spacing={3}>
-      <Box spacing={3}>
-        <table className={className}>
+    <Container alignItems="flex-start" spacing={3}>
+      <Box className={className} spacing={3}>
+        <table>
           <tbody>
             {rows}
           </tbody>
@@ -79,7 +79,7 @@ export default function Board(props) {
           onClick={undoTurn}
           disabled={gameHistoryIndex <= 0}
         >
-          Undo previous turn
+          Undo
         </Button>
         &nbsp;
         <Button

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Container, Typography } from '@material-ui/core';
+import { Grid, Box, Container, Typography, makeStyles } from '@material-ui/core';
 import Reversi from '../Reversi';
 import './index.css';
 
@@ -17,19 +17,37 @@ function Header() {
   );
 }
 
+const useStyles = makeStyles(theme => ({
+  main: {
+    marginTop: theme.spacing(8),
+    marginBottom: theme.spacing(2),
+  },
+  footer: {
+    padding: theme.spacing(3, 2),
+    marginTop: 'auto',
+    backgroundColor:
+      theme.palette.type === 'dark' ? theme.palette.grey[800] : theme.palette.grey[200],
+  },
+}));
+
 function Footer() {
+  const classes = useStyles();
   const link = <a href="https://github.com/adonisv79/bytecommander.com">my Github page</a>;
   const message = 'The source code for this site and its contents are freely available at\n';
   const email = <a href="mailto:adonisv79@gmail.com" subject="Re: Bytecommander">adonisv79@gmail.com</a>;
   return (
-    <Typography align="center">
-      {message}
-      {link}
-      <Box>
-        Bytecommander™ (2011) is owned and maintained by Adonis Lee Villamor<br />
-        for concerns on this site, please feel free to contact me at {email}
-      </Box>
-    </Typography>
+    <footer className={classes.footer}>
+      <Container maxWidth="sm">
+        <Typography align="center" variant="body1">
+          {message}
+          {link}
+          <Box>
+            Bytecommander™ (2011) is owned and maintained by Adonis Lee Villamor<br />
+            for concerns on this site, please feel free to contact me at {email}
+          </Box>
+        </Typography>
+      </Container>
+    </footer>
   );
 }
 
@@ -44,7 +62,7 @@ export default function () {
         </Grid>
         <hr />
         <Grid item>
-          <Typography align="center">
+          <Typography>
             <Reversi />
           </Typography>
         </Grid>

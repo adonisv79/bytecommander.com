@@ -34,13 +34,7 @@ export default function InfoPanel(props) {
 
   return (
     <div id="info-panel">
-      <div>
-        <h2>REVERSI</h2>
-        <p>
-          The goal is to capture as many areas as possible. For the full instructions, please see
-          <a target="new" href="https://en.wikipedia.org/wiki/Reversi"> the Wikipedia guide on Reversi </a>
-        </p>
-      </div>
+      <h2>REVERSI</h2>
       <div className="info-panel-status">
         { txtStatusMessage }
       </div>

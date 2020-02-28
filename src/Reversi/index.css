@@ -33,41 +33,33 @@ textarea.logs-list {
     margin-right: 5px;
 }
 
-img.disc {
-    height: 45px;
-    width: 45px;
+div.game-area {
+}
+
+.reversi-board {
+    margin: 5px;
+    padding:0;
+    height: 320px;
+    width: 320px;
+}
+.reversi-board table{
+    border: 5px solid saddlebrown;
+    background-color: black;
     margin: 0;
     padding: 0;
-}
-
-div.game-area {
-    /*position: absolute;*/
-    margin-top: 10px;
-    margin-left: 190px;
-}
-
-table.othello-board {
-    height: 410px;
-    width: 420px;
-    border-color: black;
-    background-color: black;
-    border-width: 10px;
-    padding: 0;
-}
-
-table.othello-board.white-turn {
-    cursor: url("/images/disc-white.svg") 23 23, auto;
-}
-
-table.othello-board.black-turn {
-    cursor: url("/images/disc-black.svg") 23 23, auto;
 }
 
 td.game-board-tile {
-    height: 50px;
-    width: 50px;
+    height: 35px;
+    width: 35px;
     margin: 0;
     padding: 0;
     background-image: url("/images/board-tile.svg");
-    text-align: center;
+}
+
+img.disc {
+    height: 25px;
+    width: 25px;
+    margin: 0 auto;
+    display: block;
 }

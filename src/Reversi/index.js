@@ -141,20 +141,18 @@ export default class Reversi extends Component {
   render() {
     return (
       <Grid container id="game" spacing={3}>
-        <Hidden smDown>
-          <Grid item xs={4} sm={3} md={3} lg={3} xl={3}>
-            <InfoPanel
-              currentPlayer={self.currentPlayer()}
-              turn={self.currentGame().turn}
-              logs={self.state.logs}
-              whiteScore={self.currentGame().whiteScore}
-              blackScore={self.currentGame().blackScore}
-              newGame={self.onNewGame}
-            />
-          </Grid>
-        </Hidden>
-        <Grid item xs={8} sm={9} md={9} lg={9} xl={9}>
-          <Container align="center">
+        <Grid xs={12} sm={4} md={3} lg={3} xl={3}>
+          <InfoPanel
+            currentPlayer={self.currentPlayer()}
+            turn={self.currentGame().turn}
+            logs={self.state.logs}
+            whiteScore={self.currentGame().whiteScore}
+            blackScore={self.currentGame().blackScore}
+            newGame={self.onNewGame}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={5} lg={4} xl={4}>
+          <Container alignItems="flex-start" justify="flex-end" direction="row">
             <Board
               boardTiles={self.currentGame().board_tiles}
               gameHistoryIndex={self.state.gameHistoryIndex}
@@ -164,6 +162,13 @@ export default class Reversi extends Component {
               undoTurn={self.onUndoMove}
             />
           </Container>
+        </Grid>
+        <Grid item xs={12} sm={12} md={3} lg={4} xl={5}>
+          <p>
+            The goal is to capture as many areas as possible. For the full instructions, please see
+            <a target="new" href="https://en.wikipedia.org/wiki/Reversi"> the Wikipedia guide on Reversi </a>.
+            Note this game is meant to be played between 2 players on hotseat.
+          </p>
         </Grid>
       </Grid>
     );
