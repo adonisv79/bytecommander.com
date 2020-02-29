@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Grid, Box, Container, Typography, ButtonGroup, Button, makeStyles } from '@material-ui/core';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { Home as HomeIcon, VideogameAsset as VideogameAssetIcon,
   RecentActors as RecentActorsIcon} from '@material-ui/icons';
 import './index.css';
