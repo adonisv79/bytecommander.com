@@ -165,7 +165,7 @@ export default class Reversi extends Component {
         </Grid>
         <Grid item xs={12} sm={12} md={3} lg={4} xl={5}>
           <p>
-            The goal is to capture as many areas as possible. For the full instructions, please see
+            The goal is to capture as many areas as possible. You can capture by selecting an area wherein you can flip your opponent\'s discs. This is valid only if they will be surrounded by your colored disc. For the full instructions, please see
             <a target="new" href="https://en.wikipedia.org/wiki/Reversi"> the Wikipedia guide on Reversi </a>.
             Note this game is meant to be played between 2 players on hotseat.
           </p>

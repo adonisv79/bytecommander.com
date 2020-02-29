@@ -1,20 +1,38 @@
-import React from 'react';
-import { Grid, Box, Container, Typography, makeStyles } from '@material-ui/core';
-import Reversi from '../Reversi';
+import React, { Suspense } from 'react';
+import { Grid, Box, Container, Typography, ButtonGroup, Button, makeStyles } from '@material-ui/core';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Home as HomeIcon, VideogameAsset as VideogameAssetIcon,
+  RecentActors as RecentActorsIcon} from '@material-ui/icons';
 import './index.css';
+const Reversi = React.lazy(() => import('../Reversi'));
+const About =  React.lazy(() => import('../AboutUs'));
 
 function Header() {
-  const intro = 'Welcome to my new page! there is not much for now but I plan to start working on my hobbies and '
-    + 'share them online. I have always been fascinated by web development since 2000 when the ISP pre-paid cards '
-    + 'became famous here. Since then I have tried HTML 4 and CSS but was never a fan of javascript. The only use I '
-    + 'found it useful then was putting rainbow trails when you hover on my page or convert emoticons to images on '
-    + 'table declarations for my forums. Since then I worked on desktop enterprise projects and kinda abandoned the '
-    + 'web technologies until 2014 when NodeJS got my attention as a solid technology for the web. I started playing '
-    + 'with NodeJS and Javascript (ES6) and other related web technologies. This site aims to become a repository of '
-    + 'all my creations! ~Adonis Lee Villamor';
   return (
-    <Typography variant="body" color="textSecondary" align="center">{intro}</Typography>
+    <header width="100%">
+      <Grid container>
+        <Grid item xs={12} sm={6} md={2} lg={3} xl={4}>
+          <img src="/images/logo.png" width="100%" />
+        </Grid>
+        <Grid item xs={12} sm={6} md={10} lg={9} xl={8} align="center" justify="center">
+          {/*<Typography variant="body" color="textSecondary" align="center">*/}
+          {/*  <Link href="#" onClick={()=>{}}>*/}
+          {/*    Link*/}
+          {/*  </Link>*/}
+          {/*</Typography>*/}
+          <ButtonGroup className="header-menus" variant="contained" color="primary" aria-label="contained primary button group" >
+            <Button component={Link} to="/" startIcon={<HomeIcon />}>Home</Button>
+            <Button component={Link} to="/portfolio/reversi" startIcon={<VideogameAssetIcon />}>Portfolios</Button>
+            <Button component={Link} to="/about" startIcon={<RecentActorsIcon />}>About</Button>
+          </ButtonGroup>
+        </Grid>
+      </Grid>
+    </header>
   );
+}
+
+function tempMenuAlert(){
+  alert('Oh! it does something! this notification!');
 }
 
 const useStyles = makeStyles(theme => ({
@@ -30,6 +48,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function LoadingBody() {
+  return (
+    <Container align="center">
+      <div>Content is loading... Please wait.<br /><img width="50px" src="/images/loading.gif" /></div>
+    </Container>
+  );
+}
+
 function Footer() {
   const classes = useStyles();
   const link = <a href="https://github.com/adonisv79/bytecommander.com">my Github page</a>;
@@ -37,10 +63,9 @@ function Footer() {
   const email = <a href="mailto:adonisv79@gmail.com" subject="Re: Bytecommander">adonisv79@gmail.com</a>;
   return (
     <footer className={classes.footer}>
-      <Container maxWidth="sm">
+      <Container maxWidth="lg">
         <Typography align="center" variant="body1">
-          {message}
-          {link}
+          {message}{link}
           <Box>
             Bytecommander™ (2011) is owned and maintained by Adonis Lee Villamor<br />
             for concerns on this site, please feel free to contact me at {email}
@@ -53,25 +78,39 @@ function Footer() {
 
 export default function () {
   return (
-    <Container>
-      <Box>
-        <Grid container>
-          <Grid item>
-            <Header />
+    <Router>
+      <Route path="/">
+        <Container>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+              <Header />
+            </Grid>
           </Grid>
-        </Grid>
-        <hr />
-        <Grid item>
-          <Typography>
-            <Reversi />
-          </Typography>
-        </Grid>
-        <hr />
-        <Grid item>
-          <Footer />
-        </Grid>
-      </Box>
-
-    </Container>
+          <hr />
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Route exact={true} path="/portfolio/reversi">
+              <Suspense fallback={LoadingBody()}>
+                <Reversi />
+              </Suspense>
+            </Route>
+            <Route exact={true} path="/about">
+              <Suspense fallback={LoadingBody()}>
+                <About />
+              </Suspense>
+            </Route>
+            <Route exact={true} path="/">
+              <Suspense fallback={LoadingBody()}>
+                <p>For now I am still rebuilding this site. In the meantime, please try my games created purely using ReactJS and related technologies I am working on now. thanks</p>
+                <Link to="/portfolio/reversi">Reversi</Link>
+              </Suspense>
+            </Route>
+          </Grid>
+          <hr />
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Footer />
+          </Grid>
+        </Container>
+      </Route>
+    </Router>
   );
 }
