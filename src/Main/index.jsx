@@ -3,7 +3,8 @@ import { Grid, Box, Container, Typography, ButtonGroup, Button, makeStyles } fro
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { Home as HomeIcon, VideogameAsset as VideogameAssetIcon,
   RecentActors as RecentActorsIcon} from '@material-ui/icons';
-import './index.css';
+import './Main.css';
+import Hidden from "@material-ui/core/Hidden";
 const Reversi = React.lazy(() => import('../Reversi'));
 const About =  React.lazy(() => import('../AboutUs'));
 
@@ -14,7 +15,7 @@ function Header() {
         <Grid item xs={12} sm={6} md={2} lg={3} xl={4}>
           <img src="/images/logo.png" width="100%" />
         </Grid>
-        <Grid item xs={12} sm={6} md={10} lg={9} xl={8} align="center" justify="center">
+        <Grid item xs={12} sm={6} md={9} lg={7} xl={6} align="center">
           {/*<Typography variant="body" color="textSecondary" align="center">*/}
           {/*  <Link href="#" onClick={()=>{}}>*/}
           {/*    Link*/}
@@ -26,6 +27,11 @@ function Header() {
             <Button component={Link} to="/about" startIcon={<RecentActorsIcon />}>About</Button>
           </ButtonGroup>
         </Grid>
+        <Hidden smDown>
+          <Grid item md={1} lg={2} xl={2}>
+            <img src="/images/header-filler.png" width="90%" />
+          </Grid>
+        </Hidden>
       </Grid>
     </header>
   );
@@ -76,7 +82,7 @@ function Footer() {
   );
 }
 
-export default function () {
+export default function Main() {
   return (
     <Router>
       <Route path="/">
@@ -100,8 +106,10 @@ export default function () {
             </Route>
             <Route exact={true} path="/">
               <Suspense fallback={LoadingBody()}>
-                <p>For now I am still rebuilding this site. In the meantime, please try my games created purely using ReactJS and related technologies I am working on now. thanks</p>
-                <Link to="/portfolio/reversi">Reversi</Link>
+                <p>Note that I am still rebuilding this site. In the meantime, please try my games created purely using ReactJS and related technologies. Or watch this awesome music video of my favorite anime ever "Hokuto No Ken" (Fist of the north Star). Thanks</p>
+                <iframe width="360" height="225" src="https://www.youtube.com/embed/VSs71eE-jmo" frameBorder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen></iframe>
               </Suspense>
             </Route>
           </Grid>
