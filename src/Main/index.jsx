@@ -1,11 +1,13 @@
 import React, { Suspense } from 'react';
-import { Grid, Box, Container, Typography, ButtonGroup, Button, makeStyles } from '@material-ui/core';
+import { Grid, Box, Container, Typography, ButtonGroup, Button, FormControl,
+  InputLabel, Select, MenuItem, makeStyles } from '@material-ui/core';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import { Home as HomeIcon, VideogameAsset as VideogameAssetIcon,
   RecentActors as RecentActorsIcon} from '@material-ui/icons';
 import './Main.css';
 import Hidden from "@material-ui/core/Hidden";
-const Reversi = React.lazy(() => import('../Reversi'));
+const Reversi = React.lazy(() => import('../Games/Reversi'));
+const Flappy = React.lazy(() => import('../Games/Flappy'));
 const About =  React.lazy(() => import('../AboutUs'));
 
 function Header() {
@@ -82,6 +84,21 @@ function Footer() {
   );
 }
 
+function redirectInternalPath(props) {
+  props.history.push(props.path)
+}
+
+function PortfolioSelect() {
+  return(
+    <div>
+      <ul>
+        <li><a href="/#/portfolio/flappy">Flappy Bird</a></li>
+        <li><a href="/#/portfolio/reversi">Reversi</a></li>
+      </ul>
+    </div>
+  );
+}
+
 export default function Main() {
   return (
     <Router>
@@ -96,7 +113,14 @@ export default function Main() {
           <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
             <Route exact={true} path="/portfolio/reversi">
               <Suspense fallback={LoadingBody()}>
+                <PortfolioSelect />
                 <Reversi />
+              </Suspense>
+            </Route>
+            <Route exact={true} path="/portfolio/flappy">
+              <Suspense fallback={LoadingBody()}>
+                <PortfolioSelect />
+                <Flappy />
               </Suspense>
             </Route>
             <Route exact={true} path="/about">
