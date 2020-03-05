@@ -1,17 +1,10 @@
 import React, {Component} from 'react';
 import { Grid } from '@material-ui/core';
 import FlappyGame from './FlappyGame';
-import './index.css';
-
-let self;
 
 export default class Flappy extends Component {
   constructor(props) {
     super(props);
-    self = this;
-    self.game = new FlappyGame();
-    self.state={};
-    self.game.onClick = this.onTouchScreen;
   }
 
   render() {

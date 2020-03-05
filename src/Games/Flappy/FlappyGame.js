@@ -1,4 +1,4 @@
-import Game from './adon-game-reactor';
+import { Game } from 'game-reactor/lib';
 import Sky from './Elements/Sky';
 import Bird from './Elements/Bird';
 import Ship from './Elements/Ship';
@@ -7,6 +7,7 @@ import Cloud from './Elements/Cloud';
 import Road from './Elements/Road';
 import Glider from './Elements/Glider';
 import Watermark from './Elements/Watermark';
+
 let sky;
 let bird;
 let ship;
@@ -20,7 +21,7 @@ let self;
 export default class FlappyGame extends Game {
   constructor() {
     super({
-      name: 'Flappy Bird PH Edition',
+      name: 'flappybird',
       viewport: {
         showPerfStats: true,
         fps: 30,
@@ -69,13 +70,16 @@ export default class FlappyGame extends Game {
   }
 
   gameDraw(lapse, sysPerf) {
-    self.elements.redraw(lapse);
-    if (this.config.viewport.showPerfStats) {
-      self.viewport.drawText(`Frame: ${sysPerf.frameNumber}/${this.config.viewport.fps}`, { x: 260, y: 20 });
-    }
-    if (!this.state.isPlaying) {
-      self.viewport.drawText('Touch screen', { x: 80, y: 120 }, 'notice');
-      self.viewport.drawText('to start...', { x: 110, y: 150 }, 'notice');
+    if (self.viewport.CanvasRef) {
+
+      self.elements.redraw(lapse);
+      if (this.config.viewport.showPerfStats) {
+        self.viewport.drawText(`Frame: ${sysPerf.frameNumber}/${this.config.viewport.fps}`, { x: 260, y: 20 });
+      }
+      if (!this.state.isPlaying) {
+        self.viewport.drawText('Touch screen', { x: 80, y: 120 }, 'notice');
+        self.viewport.drawText('to start...', { x: 110, y: 150 }, 'notice');
+      }
     }
   }
 

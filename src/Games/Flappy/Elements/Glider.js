@@ -1,4 +1,4 @@
-import GameElement from '../adon-game-reactor/GameElement';
+import { GameElement } from 'game-reactor/lib';
 
 export default class Glider extends GameElement {
   constructor(game) {

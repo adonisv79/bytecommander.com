@@ -1,4 +1,4 @@
-import GameElement from '../adon-game-reactor/GameElement';
+import { GameElement } from 'game-reactor/lib';
 
 export default class Mountain extends GameElement {
   constructor(game) {
