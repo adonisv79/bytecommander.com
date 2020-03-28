@@ -1,30 +1,31 @@
-import { GameElement } from 'game-reactor/lib';
+// import { GameElement } from 'game-reactor/lib';
+import { GameElement } from './../GR';
 
 export default class Cloud extends GameElement {
   constructor(game) {
     super(game, {
       name: 'cloud',
       sprite: 'cloud',
+      pos: { x: 0, y: 100 },
       state: {
-        xPos: 0,
         xVelocity: 100,
       },
     });
   }
 
   onUpdate(game, lapse) {
-    this.state.xPos -= ((lapse / 1000) * this.state.xVelocity);
-    if (this.state.xPos <= -100) {
-      this.state.xPos = 150;
+    this.XPos -= ((lapse / 1000) * this.State.xVelocity);
+    if (this.XPos <= -100) {
+      this.XPos = 150;
     }
   }
 
   onDraw(game) {
     game.viewport.drawElement(this, {
-      pos: { x: this.state.xPos, y: 100 },
+      pos: { x: this.XPos, y: this.YPos },
     });
     game.viewport.drawElement(this, {
-      pos: { x: this.state.xPos + 250, y: 100 },
+      pos: { x: this.XPos + 250, y: this.YPos },
     });
   }
 }

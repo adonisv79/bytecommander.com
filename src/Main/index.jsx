@@ -8,6 +8,7 @@ import './Main.css';
 import Hidden from "@material-ui/core/Hidden";
 const Reversi = React.lazy(() => import('../Games/Reversi'));
 const Flappy = React.lazy(() => import('../Games/Flappy'));
+const HelloGameReactor = React.lazy(() => import('../Games/HelloGameReactor'));
 const About =  React.lazy(() => import('../AboutUs'));
 
 function Header() {
@@ -121,6 +122,12 @@ export default function Main() {
               <Suspense fallback={LoadingBody()}>
                 <PortfolioSelect />
                 <Flappy />
+              </Suspense>
+            </Route>
+            <Route exact={true} path="/portfolio/hellogamereactor">
+              <Suspense fallback={LoadingBody()}>
+                <PortfolioSelect />
+                <HelloGameReactor />
               </Suspense>
             </Route>
             <Route exact={true} path="/about">

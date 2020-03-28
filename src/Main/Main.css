@@ -22,3 +22,8 @@ header{
 .Grid {
     border: 1px solid red;
 }
+
+@font-face {
+    font-family: 'Flappy';
+    src: url('/fonts/flappy.woff2');
+}

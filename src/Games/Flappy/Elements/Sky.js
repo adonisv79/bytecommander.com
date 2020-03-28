@@ -1,4 +1,5 @@
-import { GameElement } from 'game-reactor/lib';
+// import { GameElement } from 'game-reactor/lib';
+import { GameElement } from './../GR';
 
 export default class Sky extends GameElement {
   constructor(game) {
@@ -14,8 +15,6 @@ export default class Sky extends GameElement {
   }
 
   onDraw(game) {
-    game.viewport.drawElement(this, {
-      pos: { x: 0, y: 0 },
-    });
+    game.viewport.drawElement(this);
   }
 }
