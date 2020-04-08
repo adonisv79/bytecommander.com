@@ -1,0 +1,43 @@
+{
+  "name": "alv-api-template",
+  "version": "0.1.0",
+  "description": "ExpressJS API template",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint-fix": "eslint . --ext .ts,.tsx --fix",
+    "dev": "ts-node src/index.ts",
+    "prod": "node dist/src/index.js",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adonisv79/alv-api-template.git"
+  },
+  "keywords": [
+    "adonis"
+  ],
+  "author": "Adonis Lee Villamor",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/adonisv79/alv-api-template/issues"
+  },
+  "homepage": "https://github.com/adonisv79/alv-api-template#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.3",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.5",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "express": "^4.17.1",
+    "jest": "^25.2.3",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  }
+}
