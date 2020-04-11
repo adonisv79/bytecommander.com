@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: s-auth-deployment
+  labels:
+    app: s-auth
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: s-auth
+  template:
+    metadata:
+      name: s-auth-pod
+      labels:
+        app: s-auth
+    spec:
+      containers:
+        - name: redis-sess-container
+          image: redis:5.0.8
+          ports:
+            - containerPort: 6379
+        - name: mongo-users-container
+          image: mongo:4.2.5
+          ports:
+            - containerPort: 27017
+      volumes:
+        - name: s-auth-volume
+          persistentVolumeClaim:
+            claimName: free-persist-volume-claim
+            
+---
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "s-auth-deployment-service"
+  namespace: "default"
+  labels:
+    app: "s-auth"
+spec:
+  selector:
+    app: "s-auth"
+  ports:
+  - name: "6379-to-6379-tcp"
+    protocol: "TCP"
+    port: 6379
+    targetPort: 6379
+  - name: "27017-to-27017-tcp"
+    protocol: "TCP"
+    port: 27017
+    targetPort: 27017
+  type: "LoadBalancer"
+  loadBalancerIP: "35.227.147.98"
