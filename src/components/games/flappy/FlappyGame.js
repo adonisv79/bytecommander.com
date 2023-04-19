@@ -1,5 +1,3 @@
-"use client"
-
 import { Game } from './GR';
 import Sky from './Elements/Sky';
 import Bird from './Elements/Bird';

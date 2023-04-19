@@ -1,5 +1,3 @@
-"use client"
-
 import React, { MouseEventHandler } from 'react';
 import styles from './InfoPanel.module.css';
 import Button from '../../ui/Button';

@@ -1,4 +1,3 @@
-// import { GameElement } from 'game-reactor/lib';
 import { GameElement, CollisionBox } from './../GR';
 
 const BIRD_START_YPOS = 150;

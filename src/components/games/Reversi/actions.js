@@ -63,7 +63,7 @@ function captureSouthWest(boardTiles, targetX, targetY, player, flipOpponents) {
   return captureDirection(boardTiles, targetX, -1, targetY, 1, player, flipOpponents);
 }
 
-function captureTile(boardTiles, targetX, targetY, player) {
+let captureTile = function CaptureTile(boardTiles, targetX, targetY, player) {
   const captureCount = {
     total: 0,
     north: 0,

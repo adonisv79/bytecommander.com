@@ -1,4 +1,3 @@
-// import { GameElement } from 'game-reactor/lib';
 import { GameElement } from './../GR';
 
 export default class Watermark extends GameElement {

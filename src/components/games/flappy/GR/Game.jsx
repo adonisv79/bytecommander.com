@@ -1,5 +1,3 @@
-"use client"
-
 import React, { Component } from 'react';
 import Viewport from './GameViewport';
 import SpriteManager from './SpriteManager.jsx';

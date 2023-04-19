@@ -90,7 +90,7 @@ export default function Board(props: BoardProps) {
         <Button
           onClick={()=>{skipTurn();}}
         >
-          Skip {currentPlayer === 1? 'white' : 'black'}'s turn
+          Skip {currentPlayer === 1? 'white\'s' : 'black\'s'} turn
         </Button>
       </div>
     </div>

@@ -1,5 +1,3 @@
-"use client"
-
 import React, {Component} from 'react';
 let sources;
 let sprites;
@@ -64,7 +62,7 @@ export default class SpriteManager extends Component{
     const images = [];
     const entries = Object.entries(sources);
     for (const [id, config] of entries) {
-      images.push(<img ref={config.ref} key={ `game-reactor_${config.path}`} src={config.path} hidden={true} />);
+      images.push(<img alt={"Image for" + id } ref={config.ref} key={ `game-reactor_${config.path}`} src={config.path} hidden={true} />);
     }
     return (
       <div id={`BRAND_ID${'_SPRITES'}`}>

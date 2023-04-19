@@ -1,5 +1,3 @@
-'use client';
-
 let sources;
 let channels;
 

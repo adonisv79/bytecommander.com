@@ -1,4 +1,3 @@
-// import { GameElement } from 'game-reactor/lib';
 import {CollisionBox, GameElement} from './../GR';
 
 export default class Coin extends GameElement {

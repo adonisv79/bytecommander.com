@@ -1,3 +1,5 @@
+"use client"
+
 import FlappyGame from '../../../components/games/flappy/FlappyGame';
 
 export default function Flappy() {
