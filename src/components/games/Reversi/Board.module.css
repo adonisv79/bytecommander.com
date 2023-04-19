@@ -1,0 +1,23 @@
+#game-board {
+    height: 100%;
+}
+
+.boardtable{
+    border: 5px solid saddlebrown;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.boardtile {
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    padding: 0;
+    background-image: url("/images/games/reversi/board-tile.svg");
+}
+
+.discimage {
+    margin: 0 auto;
+    display: block;
+}
