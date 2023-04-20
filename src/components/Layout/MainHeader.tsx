@@ -1,26 +1,26 @@
-import Link from 'next/link'
-import Button from '../ui/Button'
+import NavBar from '../ui/NavigationBar'
 export default function MainHeader() {
+  const navbarConfig:any = [];
+  navbarConfig.push({ link: '/', text: 'Home' })
+  navbarConfig.push({ link: '/games/reversi', text: 'Reversi' })
+  navbarConfig.push({ link: '/games/flappy', text: 'Flappy Bee' })
+  navbarConfig.push({ link: 'http://mypinoy.bytecommander.com', text: 'MyPinoy Stock market Scraper', newTab: true })
+  navbarConfig.push({ link: 'http://panda-appliances.com', text: 'Panda Appliances', newTab: true })
+  navbarConfig.push({ link: 'https://github.com/adonisv79', text: 'My Projects', newTab: true })
+  navbarConfig.push({ link: 'https://www.linkedin.com/in/adonisv79/', text: 'My Professional Profile', newTab: true })
+  
+
   return <header className="p-2 rounded-md bg-gradient-to-r from-cyan-400 via-fuchsia-300 to-indigo-500">
-    <div className="grid grid-cols-3">
-      <div>
+    <div className="flex flex-wrap">
+      <div className="w-12/12 sm:w-6/12 md:w-4/12 lg:w-3/12 xl:w-2/12">
         <img alt="ds" src="/images/logo.png" width="300" />
+        
       </div>
-      <div>
-        <div className="flex flex-wrap">
-          <Link href="/"><Button>Home</Button></Link>
-          <Link href="/games/reversi"><Button>Reversi</Button></Link>
-          <Link href="/games/flappy"><Button>Flappy Bee</Button></Link>
-          <Link href="http://mypinoy.bytecommander.com" target="_blank"><Button>MyPinoy Stock market Scraper</Button></Link>
-          <Link href="http://panda-appliances.com" target="_blank"><Button>Panda Appliances</Button></Link>
-          <Link href="https://github.com/adonisv79" target="_blank"><Button>Public Projects</Button></Link>
-          <Link href="https://www.linkedin.com/in/adonisv79/" target="_blank"><Button>My Professional Profile</Button></Link>
-        </div>
+      <div className=' w-12/12 sm:w-6/12 md:w-8/12 lg:w-9/12'>
+        <NavBar config={navbarConfig} />
       </div>
-      <div>
-        <div className="grid text-end justify-end">
-          <img alt="s" src="/images/header-filler.png" width="150" />
-        </div>
+      <div className="w-1/12 hidden justify-end xl:inline">
+        <img alt="s" src="/images/header-filler.png" width="150" />
       </div>
     </div>
   </header>
