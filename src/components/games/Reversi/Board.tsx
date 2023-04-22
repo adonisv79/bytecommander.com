@@ -5,7 +5,7 @@ import Button from '../../ui/Button'
 
 interface BoardTileProps {
   value: number,
-  onTileClicked : Function,
+  onTileClicked: Function,
   x: number,
   y: number,
 }
@@ -81,16 +81,16 @@ export default function Board(props: BoardProps) {
       </div>
       <div>
         <Button
-          onClick={()=>{undoTurn();}}
+          onClick={() => { undoTurn(); }}
           disabled={gameHistoryIndex <= 0}
         >
           Undo
         </Button>
         &nbsp;
         <Button
-          onClick={()=>{skipTurn();}}
+          onClick={() => { skipTurn(); }}
         >
-          Skip {currentPlayer === 1? 'white\'s' : 'black\'s'} turn
+          Skip {currentPlayer === 1 ? 'white\'s' : 'black\'s'} turn
         </Button>
       </div>
     </div>

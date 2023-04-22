@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return <div>
     <div className='text-center m-4'>
-      <h3>SW Developer - Team Lead - Manager - Trader</h3>
+      <h2 className='flex flex-wrap justify-center'><div>SW Developer - </div><div>Team Lead - </div><div>Manager - </div><div>Trader</div></h2>
     </div>
     <div className='bg-indigo-800'>
       <div className='flex overflow-hidden'>
@@ -14,7 +14,7 @@ export default function Home() {
       </div>
     </div>
     <div className='text-center m-4'>
-      <h1>Worked with the bests</h1>
+      <h1>Great work experiences</h1>
     </div>
     <div className='bg-slate-300'>
       <div className='flex flex-wrap justify-center p-4'>
@@ -25,6 +25,7 @@ export default function Home() {
         <img className='object-contain m-5' src="images/companies/Fujitsu.png" alt="Fujitsu PH" width={150} height={1} />
         <img className='object-contain m-5' src="images/companies/WeServ.png" alt="WeServe" width={150} height={1} />
         <img className='object-contain m-5' src="images/companies/LenddoEFL.png" alt="LenddoEFL" width={150} height={1} />
+        <img className='object-contain m-5' src="images/companies/infinito.webp" alt="Infinit-o" width={150} height={1} />
         <img className='object-contain m-5' src="images/companies/prosource.webp" alt="Prosource" width={150} height={1} />
         <img className='object-contain m-5' src="images/companies/siteminder.png" alt="SiteMinder" width={150} height={1} />
         <img className='object-contain m-5' src="images/companies/prudentialife.png" alt="Pridentialife" width={150} height={1} />
@@ -51,10 +52,10 @@ export default function Home() {
     <div className='text-center bg-stone-100'>
 
       <div className='flex flex-wrap justify-center p-4'>
-        
-      <img className='object-contain m-5' src="images/techlogos/github.png" alt="Github" width={150} height={1} />
-      <img className='object-contain m-5' src="images/techlogos/visualstudio.png" alt="Visual Studio" width={150} height={1} />
-      <img className='object-contain m-5' src="images/techlogos/typescript.png" alt="Typescript" width={150} height={1} />
+
+        <img className='object-contain m-5' src="images/techlogos/github.png" alt="Github" width={150} height={1} />
+        <img className='object-contain m-5' src="images/techlogos/visualstudio.png" alt="Visual Studio" width={150} height={1} />
+        <img className='object-contain m-5' src="images/techlogos/typescript.png" alt="Typescript" width={150} height={1} />
         <img className='object-contain m-5' src="images/techlogos/front-end-stack.png" alt="WEB" width={200} height={1} />
         <img className='object-contain m-5' src="images/techlogos/react.png" alt="ReactJS" width={150} height={1} />
         <img className='object-contain m-5' src="images/techlogos/tailwind.jpg" alt="Tailwind" width={150} height={1} />

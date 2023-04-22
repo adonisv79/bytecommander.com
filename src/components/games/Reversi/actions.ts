@@ -1,4 +1,11 @@
-function validateCaptureChain(boardTiles, x, y, player, captureCount, flipOpponents = false) {
+function validateCaptureChain(
+  boardTiles: number[][],
+  x: number,
+  y: number,
+  player: number,
+  captureCount: number,
+  flipOpponents = false
+) {
   if (x < 0 || x > 7 || y < 0 || y > 7) {
     return -1;
   } else if (boardTiles[x][y] === player && captureCount > 0) {
@@ -11,12 +18,21 @@ function validateCaptureChain(boardTiles, x, y, player, captureCount, flipOppone
   return -1; // nothing to capture so terminate any further search
 }
 
-function captureDirection(boardTiles, startX, dirX, startY, dirY, player, flipOpponents) {
+function captureDirection(
+  boardTiles: number[][],
+  startX: number,
+  dirX: number,
+  startY: number,
+  dirY: number,
+  player: number,
+  flipOpponents: boolean
+) {
   let captureCount = 0;
   let x = startX + dirX;
   let y = startY + dirY;
   while (true) {
-    const action = validateCaptureChain(boardTiles, x, y, player, captureCount, flipOpponents);
+    const action = validateCaptureChain(boardTiles, x, y,
+      player, captureCount, flipOpponents);
     switch (action) {
       case 1:
         captureCount += 1;
@@ -31,39 +47,89 @@ function captureDirection(boardTiles, startX, dirX, startY, dirY, player, flipOp
   }
 }
 
-function captureNorth(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureNorth(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,
+) {
   return captureDirection(boardTiles, targetX, 0, targetY, -1, player, flipOpponents);
 }
 
-function captureSouth(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureSouth(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,) {
   return captureDirection(boardTiles, targetX, 0, targetY, 1, player, flipOpponents);
 }
 
-function captureWest(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureWest(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,
+) {
   return captureDirection(boardTiles, targetX, -1, targetY, 0, player, flipOpponents);
 }
 
-function captureEast(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureEast(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,
+) {
   return captureDirection(boardTiles, targetX, 1, targetY, 0, player, flipOpponents);
 }
 
-function captureNorthEast(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureNorthEast(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,
+) {
   return captureDirection(boardTiles, targetX, 1, targetY, -1, player, flipOpponents);
 }
 
-function captureNorthWest(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureNorthWest(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,
+) {
   return captureDirection(boardTiles, targetX, -1, targetY, -1, player, flipOpponents);
 }
 
-function captureSouthEast(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureSouthEast(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,
+) {
   return captureDirection(boardTiles, targetX, 1, targetY, 1, player, flipOpponents);
 }
 
-function captureSouthWest(boardTiles, targetX, targetY, player, flipOpponents) {
+function captureSouthWest(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number,
+  flipOpponents: boolean = false,) {
   return captureDirection(boardTiles, targetX, -1, targetY, 1, player, flipOpponents);
 }
 
-let captureTile = function CaptureTile(boardTiles, targetX, targetY, player) {
+let captureTile = function CaptureTile(
+  boardTiles: number[][],
+  targetX: number,
+  targetY: number,
+  player: number) {
   const captureCount = {
     total: 0,
     north: 0,

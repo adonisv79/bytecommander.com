@@ -25,12 +25,16 @@ h1 {
   @apply text-5xl font-bold text-purple-300
 }
 
+h2 {
+  @apply text-3xl font-bold text-purple-300
+}
+
 h3 {
   @apply text-2xl font-bold text-purple-300
 }
 
 h4 {
-  @apply text-xl font-bold text-purple-300
+  @apply text-xl font-semibold text-purple-300
 }
 
 h5 {

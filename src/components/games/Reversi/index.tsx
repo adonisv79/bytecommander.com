@@ -92,7 +92,7 @@ export default class Reversi extends Component {
     });
   }
 
-  onTileClicked(x:number, y: number) {
+  onTileClicked(x: number, y: number) {
     const clonedGameState = deepCopy(self.currentGame());
     let logMessage;
     if (!clonedGameState.board_tiles[x][y]) {
