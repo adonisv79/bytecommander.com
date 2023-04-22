@@ -7,15 +7,10 @@ export default function Document() {
     <Html lang="en">
       <Head />
       <body>
-        <div 
-          className="m-auto justify-center 
-            text-center max-w-6xl
-        ">
-          <MainHeader />
-          <Main />
-          <NextScript />
-          <MainFooter />
-        </div>
+        <MainHeader />
+        <Main />
+        <NextScript />
+        <MainFooter />
       </body>
     </Html>
   )

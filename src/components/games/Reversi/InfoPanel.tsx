@@ -21,7 +21,7 @@ function GameLogs(props: GameLogProps) {
 
   return <div className={styles.logsarea}>
     <textarea
-      className={["text-xs p-1 mx-1", styles.logslist].join(" ")}
+      className={["text-xs p-1 mx-1 text-gray-800", styles.logslist].join(" ")}
       readOnly
       value={text} />
   </div>;
@@ -50,13 +50,13 @@ export default function InfoPanel(props: InfoPanelProps) {
   let whitePlayerClass = "border border-gray-500";
   let blackPlayerClass = "border border-gray-500";
   if (currentPlayer === 1) {
-    whitePlayerClass += ' bg-yellow-200';
+    whitePlayerClass += ' bg-yellow-700';
   } else if (currentPlayer === -1) {
-    blackPlayerClass += ' bg-yellow-200';
+    blackPlayerClass += ' bg-yellow-700';
   }
 
   return (
-    <div className='text-gray-900' id="info-panel">
+    <div id="info-panel">
       <h2 className='text-xl font-bold'>REVERSI</h2>
       <div className="text-sm font-medium">
         {txtStatusMessage}

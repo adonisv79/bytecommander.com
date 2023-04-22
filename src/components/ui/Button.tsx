@@ -11,16 +11,16 @@ export default function Button(props: ButtonProps) {
       if (props.onClick) props.onClick();
     }}
     className="
-        m-1 p-1 rounded-full 
+        m-1 p-0.5 rounded-full 
         bg-gray-500 disabled:opacity-50"
   >
     <span
       className="
         block px-2 py-1 rounded-full
         font-semibold
-        text-xs
-        text-primary-f-1
-        bg-primary-b-1
+        text-sm
+        text-purple-200
+        bg-indigo-800
         hover:bg-primary-b-3
         hover:text-primary-f-3"
     >

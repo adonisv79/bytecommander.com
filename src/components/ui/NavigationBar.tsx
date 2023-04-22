@@ -5,9 +5,6 @@ interface NavigationItem {
 }
 
 interface NavigationBarProps {
-  // disabled?: boolean,
-  // onClick?: Function,
-  // children?: React.ReactNode;
   config: NavigationItem[]
 }
 
@@ -16,7 +13,7 @@ export default function NavigationBar({ config }: NavigationBarProps) {
   config.forEach(e => {
       links.push(
         <a href={e.link} 
-          className="m-1.5 text-orange-950 hover:text-orange-700"
+          className="m-5 text-4xl text-gray-200 hover:text-yellow-500"
           target={e.newTab? "_blank": "_self"}>
           {e.text}
         </a>

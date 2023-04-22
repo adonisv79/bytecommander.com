@@ -18,11 +18,33 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply text-purple-100 bg-indigo-950
+}
+
+h1 {
+  @apply text-5xl font-bold text-purple-300
+}
+
+h2 {
+  @apply text-3xl font-bold text-purple-300
+}
+
+h3 {
+  @apply text-2xl font-bold text-purple-300
+}
+
+h4 {
+  @apply text-xl font-semibold text-purple-300
+}
+
+h5 {
+  @apply text-lg font-semibold text-purple-300
+}
+
+a {
+  @apply text-violet-300
+}
+
+a:hover {
+  @apply text-yellow-400
 }
