@@ -1,6 +1,6 @@
 interface NavigationItem {
   link: string,
-  text: string,
+  content: JSX.Element,
   newTab?: boolean,
 }
 
@@ -15,7 +15,7 @@ export default function NavigationBar({ config }: NavigationBarProps) {
         <a href={e.link} 
           className="m-5 text-4xl text-gray-200 hover:text-yellow-500"
           target={e.newTab? "_blank": "_self"}>
-          {e.text}
+          {e.content}
         </a>
       )
   });
