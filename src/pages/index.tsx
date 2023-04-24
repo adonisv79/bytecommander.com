@@ -1,10 +1,25 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
+import Head from 'next/head'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return <div>
+    <Head>
+      <meta property="og:url" content="https://bytecommander.com" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="The ByteCommander" />
+      <meta name="description" content="Profile and portfolio website of Adonis Lee Villamor" />
+      <meta property="og:image" content="https://bytecommander.com/images/don.webp" />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta property="twitter:domain" content="bytecommander.com" />
+      <meta property="twitter:url" content="https://bytecommander.com" />
+      <meta name="twitter:title" content="The ByteCommander" />
+      <meta name="twitter:description" content="Profile and portfolio website of Adonis Lee Villamor" />
+      <meta name="twitter:image" content="https://bytecommander.com/images/don.webp" />
+    </Head>
     <div className='text-center m-4'>
       <h2 className='grid sm:grid-cols-2 md:grid-cols-4 justify-center'>
         <div>SW Developer</div><div>Team Lead</div><div>Manager</div><div>Trader</div>
