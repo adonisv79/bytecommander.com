@@ -134,18 +134,18 @@ export default abstract class Game {
       clearInterval(gameLoopInterval);
     }
 
-    self.onReady();
-    self.sounds.onReady();
-    self.startGameLoop();
+    this.onReady();
+    this.sounds.onReady();
+    this.startGameLoop();
   }
 
   onComponentUnmount() {
-    self.logger.info('Game component  unmounted!')
+    this.logger.info('Game component unmounted!')
     if (gameLoopInterval) { // kill old interval
       clearInterval(gameLoopInterval);
     }
     this.sounds.stop();
-    self.onDisengaged();
+    this.onDisengaged();
   }
 
   get ShowCollisions() { return this.config.viewport.showCollisions; }
@@ -200,10 +200,10 @@ export default abstract class Game {
 
 export function GameElement(game: Game): JSX.Element {
   useEffect(() => {
-    game.onComponentMount();
+    game.onComponentMount(); 
     return () => {
       if (game.onComponentUnmount) game.onComponentUnmount();
-    }
+    } 
   });
 
   return (

@@ -1,4 +1,3 @@
-import { Input } from 'postcss'
 import Charts from './../../libs/charts'
 import { ChangeEvent, useState } from 'react';
 
@@ -17,7 +16,7 @@ export default function ChartsPage() {
   }
   
   return <div>
-    <textarea className='text-gray-900' onChange={textAreaChanged} value={data} />
+    <textarea className='text-gray-900' onChange={textAreaChanged} value={data.toString()} />
     <Charts data={data}></Charts>
   </div>
 }
