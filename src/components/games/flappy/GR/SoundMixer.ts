@@ -1,68 +1,65 @@
 import Game from "./Game";;
 
-let self: SoundMixer;
-let sources: { [key: string]: any };
-let channels: HTMLAudioElement[];
-
-function getNextAvailableChannel() {
-  for (let i = 0; i < channels.length; i += 1) {
-    if (isNaN(channels[i].duration)
-      || channels[i].ended
-      || (channels[i].duration >= 0 && channels[i].paused)) {
-
-      self.game.logger.debug(`Activated audio channel ${i}`)
-      return channels[i];
-    }
-  }
-  throw new Error('Too much audio playing at once');
-}
-
 export default class SoundMixer {
   game: Game;
-  channelCount: number
+  channelCount: number;
+  sources: { [key: string]: any };
+  channels: HTMLAudioElement[];
 
   constructor(game: Game, channelCount = 10) {
     this.game = game;
-    sources = [];
-    channels = [];
+    this.sources = [];
+    this.channels = [];
     this.channelCount = channelCount;
-    self = this;
   }
 
   onReady() {
-    for (let i = 0; i < self.channelCount; i += 1) {
-      channels[i] = new Audio();
-      channels[i].muted = true;
+    for (let i = 0; i < this.channelCount; i += 1) {
+      this.channels[i] = new Audio();
+      this.channels[i].muted = true;
     }
+  }
+
+  getNextAvailableChannel() {
+    for (let i = 0; i < this.channels.length; i += 1) {
+      if (isNaN(this.channels[i].duration)
+        || this.channels[i].ended
+        || (this.channels[i].duration >= 0 && this.channels[i].paused)) {
+  
+        this.game.logger.debug(`Activated audio channel ${i}`)
+        return this.channels[i];
+      }
+    }
+    throw new Error('Too much audio playing at once');
   }
 
   addSource(id: string, path: string) {
-    if (sources[id]) {
+    if (this.sources[id]) {
       throw new Error(`Sound source '${id}' already exists`);
     }
-    sources[id] = path;
+    this.sources[id] = path;
   }
 
   play(id: string) {
-    if (!sources[id]) {
+    if (!this.sources[id]) {
       throw new Error(`Sound source '${id}' does not exist`);
     }
     if (typeof window !== 'undefined') {
-      const ch = getNextAvailableChannel();
-      ch.src = sources[id];
+      const ch = this.getNextAvailableChannel();
+      ch.src = this.sources[id];
       ch.muted = false;
-      self.game.logger.info(`Playing ${id} on new channel`)
+      this.game.logger.info(`Playing ${id} on new channel`)
       ch.play();
     }
   }
 
   stop() {
-    self.game.logger.info('Pausing audio channels')
+    this.game.logger.info('Pausing audio channels')
     if (typeof window !== 'undefined') {
-      for (let i = 0; i < channels.length; i += 1) {
-        if (!channels[i].ended || !channels[i].paused) {
-          channels[i].pause();
-          channels[i].muted = true;
+      for (let i = 0; i < this.channels.length; i += 1) {
+        if (!this.channels[i].ended || !this.channels[i].paused) {
+          this.channels[i].pause();
+          this.channels[i].muted = true;
         }
       }
     }

@@ -4,6 +4,9 @@ This project serves as my base website to showcase my profile, work and experien
 
 ## Bytecommander.com
 This site is also hosted in http://www.bytecommander.com
+* Framework - NextJS + React
+* Language(s) - Typescript, TailwindCss
+* Icons - from https://heroicons.com/
 
 ## History
 

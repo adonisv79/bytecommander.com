@@ -48,3 +48,11 @@ a {
 a:hover {
   @apply text-yellow-400
 }
+
+header a {
+  @apply transition ease-out duration-500
+}
+
+footer a {
+  @apply transition ease-out duration-500
+}
