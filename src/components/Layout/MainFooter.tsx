@@ -26,6 +26,7 @@ export default function MainFooter() {
         <li><Link href="/games/reversi">Reversi</Link></li>
         <li><Link href="/games/flappy">Flapy Bee</Link></li>
         <li><Link href="/search">Video Search Engine</Link></li>
+        <li><Link href="/charts">D3 Charts</Link></li>
         <li><Link href="/youtube">Youtube Videos</Link></li>
         <li><Link href="http://mypinoy.bytecommander.com/" target='_blank'>MyPinoy Network</Link></li>
         <li><Link href="http://panda-appliances.com/" target='_blank'>Panda Appliances</Link></li>

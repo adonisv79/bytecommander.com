@@ -1,22 +1,45 @@
-import Charts from './../../libs/charts'
-import { ChangeEvent, useState } from 'react';
+import BarChart from './../../libs/charts/BarChart'
+import { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 export default function ChartsPage() {
-  const [data, setData] = useState([12, 5, 6, 6, 9, 10]);
+  const barchartData = useRef<HTMLInputElement>(null);
+  const [data, setData] = useState([5, 10, 15, 20, 15, 15, 10, 20, 25])
 
-  function textAreaChanged(e: ChangeEvent) {
-    const textValue = (e.target as HTMLTextAreaElement).value;
-    console.log(textValue)
+  useEffect(() => {
+    if (barchartData.current)
+      barchartData.current.value = data.toString()
+  }, []);
+
+
+  function updateData() {
     try {
-      const data = JSON.parse(textValue);
-      setData(data);
+      if (barchartData.current) {
+        const data = barchartData.current.value.split(",")
+          .map(i => {
+            const n = parseInt(i.trim())
+            if (isNaN(n)) throw new Error('NaN')
+            return n;
+          });
+        setData(data);
+      }
     } catch {
-      console.log(`Invalid JSON in textArea: ${textValue}`);
+      alert('Invalid data: use comma delimited numbers only');
     }
   }
-  
+
   return <div>
-    <textarea className='text-gray-900' onChange={textAreaChanged} value={data.toString()} />
-    <Charts data={data}></Charts>
+    <h2>Charts Demo</h2>
+    <p>The following is a new prototype of the charts I used in <a href="http://mypinoy.bytecommander.com">MyPinoy</a>. These charts are react components used with D3</p>
+    <p>Note that this page is still under construction and most of the charts are still undergoing transitions. Check back soon! :)</p>
+    <div>
+      Ente a comma delimited numbers here then press UPDATE
+      <input type='text' ref={barchartData} className='m-4 p-1 text-gray-900' />
+      <button className='border p-1' onClick={() => { updateData() }}>UPDATE</button>
+    </div>
+    <div className='border m-2 h-96'>
+      <BarChart id="barchart" data={data}
+        viewport={{ width: 800, height: 400, bgcolor: "#fff" }}
+        bars={{ color: "#859" }} />
+    </div>
   </div>
 }
