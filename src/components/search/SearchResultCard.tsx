@@ -11,8 +11,8 @@ export default function SearchResultCard(props : SearchResultCardProps) {
   return <div className="p-5 text-center" onClick={() => { props.onClick(props.id) }}>
     <div className="border hover:shadow-lg hover:shadow-yellow-500
       rounded-lg overflow-hidden">
-      <div className="h-96 bg-black">
-        <img className="w-72 min-h-max max-h-96"
+      <div className="grid bg-black h-96 xl:h-80 2xl:h-96">
+        <img className="m-auto object-cover h-[inherit] "
           alt={`${props.type}#${props.id}: (${props.year})${props.title}`}
           src={props.imgSource} />
       </div>

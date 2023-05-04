@@ -75,10 +75,14 @@ export default function PageNavigation({ itemsPerPage, currentPage, resultCount,
     onNavigation={currentPage < maxPages ? onNavigation : null}
     tooltip={getToolTipText(maxPages)} />);
 
-  let currentPageInfoText = `Showing items ${((currentPage -1) * itemsPerPage) + 1}-`;
-  const currentPageMaxItems = currentPage * itemsPerPage;
-  currentPageInfoText += currentPageMaxItems > resultCount ? resultCount : currentPageMaxItems;
-  currentPageInfoText += ` from ${resultCount} results`;
+  let currentPageInfoText = 'Showing';
+  if (currentPage >= 1) {
+    currentPageInfoText += ` items ${((currentPage -1) * itemsPerPage) + 1}-`;
+    const currentPageMaxItems = currentPage * itemsPerPage;
+    currentPageInfoText += currentPageMaxItems > resultCount ? resultCount : currentPageMaxItems;
+    currentPageInfoText += ' from';
+  }
+  currentPageInfoText += ` ${resultCount} results`;
 
   return <nav className="text-center select-none">
     {links}

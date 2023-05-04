@@ -3,15 +3,15 @@ import MovieInfo from "./MovieInfoPopup"
 import { MutableRefObject, useEffect, useRef, useState } from "react"
 import PageNavigation from "../ui/PageNavigation";
 
-const API_URL = 'http://www.omdbapi.com/?apikey=2a2afd81'
+const API_URL = 'https://www.omdbapi.com/?apikey=2a2afd81'
 
 export default function Movies() {
   const [results, setResults] = useState();
   const [infoDialogVisibility, setInfoDialogVisibility] = useState(false);
-  const [searchText, setSearchText] = useState("south park");
+  const [searchText, setSearchText] = useState("dragon ball");
   const [currentPage, setCurrentPage] = useState(1);
   const [resultCount, setResultCount] = useState(0);
-  const [movieData, setMovieData] = useState({});
+  const [movieData, setMovieData] = useState(null);
   const searchBox: MutableRefObject<HTMLInputElement | null> = useRef(null);
 
 
@@ -37,7 +37,7 @@ export default function Movies() {
   }
 
   function onCardSelected(id: string) {
-    setMovieData({});
+    setMovieData(null);
     setInfoDialogVisibility(true);
     searchOMDBAPI(id).then((result) => {
       console.log(result);
@@ -52,22 +52,32 @@ export default function Movies() {
     }
   }, [searchText, currentPage]);
 
+  function startNewSearch() {
+    setCurrentPage(1);
+    setSearchText((searchBox.current?.value || ""));
+  }
+
   return (
     <div className="justify-center text-center ">
-      <h1 >Movie List</h1>
+      <h1 >BoreDon™ Search Engine</h1>
+      <p>Welcome to the BoreDon™ search engine. A place to look for your contents to satisfy your boring life...</p>
+      <p>In this app, we will feature a react based pagination, card components and modal dialogs.</p>
       <div>
         <div className="flex flex-wrap justify-center m-4">
-          <h5 className="mr-4">Enter a movie title or keyword</h5>
+          <h5 className="mr-4">Enter a keyword or content title</h5>
           <span className="flex w-96">
             <input type="text"
               className="w-80 px-2 bg-yellow-200 text-purple-800"
               ref={searchBox}
               placeholder="Search for movie titles"
+              onKeyDown={e => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  startNewSearch();
+                }
+              }}
             />
-            <span onClick={() => {
-              setCurrentPage(1);
-              setSearchText((searchBox.current?.value || ""));
-            }}>
+            <span onClick={startNewSearch}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
               </svg>

@@ -32,7 +32,7 @@ export default function SearchResult({ result, onItemSelected }: SearchResultPro
   return (<>
     <div className='p-5'>
       <h3>No results found</h3>
-      <p>Use the search bar above and look for exact words like 'batman' instead of 'batma'</p>
+      <p>Use the search bar above and look for exact words like &apos;batman&apos; instead of &apos;batma&apos;</p>
     </div>
   </>);
 }
