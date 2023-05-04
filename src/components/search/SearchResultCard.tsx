@@ -1,3 +1,5 @@
+import { toHTMLText } from '../../libs/utils/HTML'
+
 interface SearchResultCardProps {
   imgSource: string,
   title: string,
@@ -17,12 +19,12 @@ export default function SearchResultCard(props : SearchResultCardProps) {
           src={props.imgSource} />
       </div>
       <div className="grid content-center h-16 bg-gray-900 border-t-2">
-        <span className="text-yellow-500 px-2">{props.title}</span>
+        <span className="text-yellow-500 px-2">{toHTMLText(props.title)}</span>
       </div>
       <div className="text-sm bg-gray-950">
-        <p>Type: {props.type}</p>
-        <p>Released: {props.year}</p>
-        <p>IMDB ID: {props.id}</p>
+        <p>Type: {toHTMLText(props.type)}</p>
+        <p>Released: {toHTMLText(props.year)}</p>
+        <p>IMDB ID: {toHTMLText(props.id)}</p>
       </div>
     </div>
   </div>

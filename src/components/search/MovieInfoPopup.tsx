@@ -1,4 +1,6 @@
 import ModalDialog from '../ui/ModalDialog';
+import { toHTMLText } from '../../libs/utils/HTML'
+import { useEffect, useState } from 'react';
 
 export interface Rating {
   Source: string,
@@ -40,34 +42,53 @@ export interface MovieInfoPopupProps {
 }
 
 export default function MovieInfoPopup({ data, visible, onDialogClose }: MovieInfoPopupProps) {
-  return <ModalDialog visible={visible} onDialogClose={onDialogClose}>
-    <div id="modal-container" className={`${!data && 'hidden'}
+  const [fadeIn, setFadeIn] = useState(false);
+
+  useEffect(() => {
+    setFadeIn(false);
+    if (data) {
+      console.log('fading in')
+      setFadeIn(true);
+    }
+  },[data]);
+
+  function onMovieDialogClose() {
+    setFadeIn(false);
+    onDialogClose();
+  }
+
+  return <ModalDialog visible={visible} onDialogClose={onMovieDialogClose}>
+    <div className={`${data && 'hidden'} opacity-1 grid justify-center`}>
+      <img src="/images/loading2.gif" />
+    </div>
+    <div id="modal-container" className={`transition-opacity duration-[2000ms] ease-out 
+      ${ fadeIn ? 'visible opacity-100' : 'invisible opacity-0'}
       border m-2 inline-grid p-3 max-w-5xl
-      rounded-2xl shadow-lg shadow-white bg-slate-900 opacity-90
+      rounded-2xl shadow-lg shadow-white bg-slate-900
       grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}>
       <div className=' bg-indigo-950
         col-span-1 sm:col-span-2 md:col-span-3'>
-        <h2 className='p-1 text-yellow-500'>{data?.Title}</h2>
+        <h2 className='p-1 text-yellow-500'>{toHTMLText(data?.Title)}</h2>
       </div>
       <div className='text-sm p-2 col-span-1 sm:col-span-2 md:col-span-1'>
-        {data?.Year} - {data?.Rated} - {data?.Runtime}<br />
+        {toHTMLText(data?.Year)} - {toHTMLText(data?.Rated)} - {toHTMLText(data?.Runtime)}<br />
         {data?.Genre}
       </div>
       <div className='flex justify-center md:justify-end p-2 text-yellow-400 text-xs
           col-span-1 sm:col-span-2'>
         <div className='mx-2'>
           <div>IMDB Rating</div>
-          <div className='text-sm text-white'>{data?.imdbRating}<br/>({data?.imdbVotes})</div>
+          <div className='text-sm text-white'>{toHTMLText(data?.imdbRating)}<br/>({toHTMLText(data?.imdbVotes)})</div>
         </div>
         <div className='mx-2'>
           <div>Metascore</div>
-          <div className='text-sm text-white'>{data?.Metascore}</div>
+          <div className='text-sm text-white'>{toHTMLText(data?.Metascore)}</div>
         </div>
         {data?.Ratings?.map(r => {
           return (
             <div className='mx-2' key={r.Source}>
-              <div>{r.Source}</div>
-              <div className='text-sm text-white'>{r.Value}</div>
+              <div>{toHTMLText(r.Source)}</div>
+              <div className='text-sm text-white'>{toHTMLText(r.Value)}</div>
             </div>
           )
         })}
@@ -79,20 +100,20 @@ export default function MovieInfoPopup({ data, visible, onDialogClose }: MovieIn
         <img className='rounded-md' alt={""} src={data?.Poster} />
       </div>
       <div className='border m-1 p-2 col-span-1 md:col-span-2 text-left'>
-        <p>{data?.Plot}</p>
+        <p>{toHTMLText(data?.Plot)}</p>
         <h5 className='mt-2' >Country:</h5>
-        <p>{data?.Country}</p>
+        <p>{toHTMLText(data?.Country)}</p>
         <h5 className='mt-2' >Language(s):</h5>
-        <p>{data?.Language}</p>
+        <p>{toHTMLText(data?.Language)}</p>
         <h5 className='mt-2' >Starring:</h5>
-        <p>{data?.Actors}</p>
+        <p>{toHTMLText(data?.Actors)}</p>
         <h5 className='mt-2' >Directed by:</h5>
-        <p>{data?.Director}</p>
+        <p>{toHTMLText(data?.Director)}</p>
         <h5 className='mt-2' >Written by:</h5>
-        <p>{data?.Writer}</p>
+        <p>{toHTMLText(data?.Writer)}</p>
       </div> 
       <div className='col-span-1 sm:col-span-2 md:col-span-3'>
-        Awards: {data?.Awards} - Box Office: {data?.BoxOffice}
+        Awards: {toHTMLText(data?.Awards)} - Box Office: {toHTMLText(data?.BoxOffice)}
       </div>
 
     </div>

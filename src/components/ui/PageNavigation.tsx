@@ -17,8 +17,10 @@ export interface PageNavigationProps {
 }
 
 export default function PageNavigation({ itemsPerPage, currentPage, resultCount, onNavigation }: PageNavigationProps) {
-  const MAX_PAGE_LINKS = 5;
+  const MAX_PAGE_LINKS = 7;
   const links: JSX.Element[] = []
+  const navLeft: JSX.Element[] = []
+  const navRight: JSX.Element[] = []
   const maxPages: number = Math.ceil(resultCount / itemsPerPage)
 
   function getToolTipText(targetPage: number) {
@@ -62,22 +64,24 @@ export default function PageNavigation({ itemsPerPage, currentPage, resultCount,
   }
 
   // add the links for PREV, NEXT, FIRST and LAST
-  links.unshift(<NavigationButton key={`pagnavPrev`} value={currentPage - 1} text="< PREV"
+
+  navLeft.push(<NavigationButton key={`pagnavFirst`} value={1} text="<< FIRST"
+    onNavigation={currentPage > 1 ? onNavigation : null}
+    tooltip={getToolTipText(1)} />);
+  navLeft.push(<NavigationButton key={`pagnavPrev`} value={currentPage - 1} text="< PREV"
     onNavigation={currentPage > 1 ? onNavigation : null}
     tooltip={getToolTipText(currentPage - 1)} />);
-  links.push(<NavigationButton key={`pagnavNext`} value={currentPage + 1} text="NEXT >"
+
+  navRight.push(<NavigationButton key={`pagnavNext`} value={currentPage + 1} text="NEXT >"
     onNavigation={currentPage < maxPages ? onNavigation : null}
     tooltip={getToolTipText(currentPage + 1)} />);
-  links.unshift(<NavigationButton key={`pagnavFirst`} value={1} text="<< FIRST"
-    onNavigation={currentPage > 1 ? onNavigation : null} 
-    tooltip={getToolTipText(1)} />);
-  links.push(<NavigationButton key={`pagnavLast`} value={maxPages} text="LAST >>"
+  navRight.push(<NavigationButton key={`pagnavLast`} value={maxPages} text="LAST >>"
     onNavigation={currentPage < maxPages ? onNavigation : null}
     tooltip={getToolTipText(maxPages)} />);
 
   let currentPageInfoText = 'Showing';
   if (currentPage >= 1) {
-    currentPageInfoText += ` items ${((currentPage -1) * itemsPerPage) + 1}-`;
+    currentPageInfoText += ` items ${((currentPage - 1) * itemsPerPage) + 1}-`;
     const currentPageMaxItems = currentPage * itemsPerPage;
     currentPageInfoText += currentPageMaxItems > resultCount ? resultCount : currentPageMaxItems;
     currentPageInfoText += ' from';
@@ -85,7 +89,19 @@ export default function PageNavigation({ itemsPerPage, currentPage, resultCount,
   currentPageInfoText += ` ${resultCount} results`;
 
   return <nav className="text-center select-none">
+    <span className="hidden sm:inline">
+      {navLeft}
+    </span>
     {links}
+    <span className="hidden sm:inline">
+      {navRight}
+    </span>
+    <div>
+      <span className="sm:hidden">
+        {navLeft}
+        {navRight}
+      </span>
+    </div>
     <div className="pb-2">{currentPageInfoText}</div>
   </nav>
 }

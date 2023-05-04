@@ -16,11 +16,8 @@ export default function Movies() {
 
 
   const searchMovies = async ({ title, pageNumber, isCleanup }: any) => {
-    console.log(`searching for title ${title} in page ${pageNumber}`)
     const response = await fetch(`${API_URL}&s=${title}&page=${pageNumber}`);
     const data = await response.json();
-    console.log(`Search result for ${title} on page ${pageNumber}`)
-    console.log(data);
     setResultCount(data.totalResults || 0);
     setResults(data.Search || []);
   }
@@ -40,7 +37,6 @@ export default function Movies() {
     setMovieData(null);
     setInfoDialogVisibility(true);
     searchOMDBAPI(id).then((result) => {
-      console.log(result);
       setMovieData(result);
     })
   }
