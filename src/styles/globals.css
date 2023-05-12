@@ -56,3 +56,9 @@ header a {
 footer a {
   @apply transition ease-out duration-500
 }
+
+.fade {
+  transition: visibility, opacity 3s;
+  visibility: visible;
+  opacity:1;
+}

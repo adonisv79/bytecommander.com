@@ -1,4 +1,4 @@
-import React, { RefObject, createRef, useRef } from 'react';
+import React, { RefObject, createRef } from 'react';
 import Game from './Game';
 
 let self: SpriteManager;
