@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { MutableRefObject, useRef, useState } from "react";
-import { createTRPCProxyClient, httpBatchLink } from '@trpc/client';
+import { useRef, useState } from "react";
 
 interface StockInfoProps {
   data: any
