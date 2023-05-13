@@ -1,10 +1,10 @@
 # ref: https://github.com/marketplace/actions/ftp-deploy
 
+name: 🚀 Deployment
 on:
   push:
     branches:
       - master
-name: 🚀 Deploy website on push to master
 jobs:
   web-deploy:
     name: 🎉 Deploy to Shared Host
@@ -33,7 +33,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server:   ${{ env.FTP_HOST }}
+          server: ${{ vars.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: /out/
