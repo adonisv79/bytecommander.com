@@ -5,14 +5,26 @@ on:
     branches: [ master ]
 
 jobs:
-  test_pull_request:
+  test-pull-request:
+    name: Validating PR is safe
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: Applying accepted Node version
+        uses: actions/setup-node@v1
         with:
           node-version: 18
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run test
-      - run: npm run build
+
+      - name: Installing dependencies
+        run: npm ci
+
+      - name: Checking adherence to coding standards
+        run: npm run lint
+
+      - name: Runing unit tests
+        run: npm run test
+
+      - name: 🏗️ Building distributable files
+        run: npm run build
