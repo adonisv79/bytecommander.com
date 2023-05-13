@@ -10,21 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Applying accepted Node version
-        uses: actions/setup-node@v1
+      - name: 🖥️ Applying accepted Node version
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Installing dependencies
+      - name: 🤝 Installing dependencies
         run: npm ci
 
-      - name: Checking adherence to coding standards
+      - name: 🧦 Checking adherence to coding standards
         run: npm run lint
 
-      - name: Runing unit tests
+      - name: 🐞 Runing unit tests
         run: npm run test
 
-      - name: 🏗️ Building distributable files
+      - name: 🏗️ Testing if project can be built
         run: npm run build
