@@ -7,28 +7,28 @@ on:
       - master
 jobs:
   web-deploy:
-    name: 🎉 Deploy to Shared Host
+    name: Deploy to Shared Host
     runs-on: ubuntu-latest
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
 
-      - name: Applying accepted Node version
-        uses: actions/setup-node@v1
+      - name: 🖥️ Applying accepted Node version
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Installing dependencies
+      - name: 🤝 Installing dependencies
         run: npm ci
 
-      - name: Checking adherence to coding standards
+      - name: 🧦 Checking adherence to coding standards
         run: npm run lint
 
-      - name: Runing unit tests
+      - name: 🐞 Runing unit tests
         run: npm run test
 
-      - name: 🏗️ Building distributable files
-        run: npm run build
+      - name: 🏗️ Exporting distributable files to output directory
+        run: npm run export
     
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
