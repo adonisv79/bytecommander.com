@@ -1,4 +1,4 @@
-name: Node C.I.
+name: CICD-PULLREQ
 
 on:
   pull_request:
