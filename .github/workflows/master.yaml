@@ -36,5 +36,5 @@ jobs:
           server: ${{ vars.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: /home/runner/work/bytecommander.com/bytecommander.com/out/
-          server-dir: /public_html/sites/bytecommander/
+          local-dir: ${{ vars.BUILD_DIR }}
+          server-dir: ${{ vars.HOST_DIR }}
