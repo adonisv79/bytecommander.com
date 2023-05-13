@@ -1,5 +1,7 @@
 [![CICD-PULLREQ](https://github.com/adonisv79/bytecommander.com/actions/workflows/integrate.yaml/badge.svg)](https://github.com/adonisv79/bytecommander.com/actions/workflows/integrate.yaml)
 
+[![🚀 Deployment](https://github.com/adonisv79/bytecommander.com/actions/workflows/master.yaml/badge.svg)](https://github.com/adonisv79/bytecommander.com/actions/workflows/master.yaml)
+
 # About this project
 
 This project serves as my base website to showcase my profile, work and experience in my career as a software engineer, tech lead, project and engineering manager.
