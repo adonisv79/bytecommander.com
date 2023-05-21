@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import GameViewport, { ViewPortConfig } from './GameViewport';
 import SpriteManager from './SpriteManager';
 import GameElementManager from './GameElementManager';
@@ -9,7 +9,7 @@ import GameLog, { GameLogLevels } from './GameLog';
 const BRAND_ID = 'ALV-GAME-REACTOR';
 const LOG_LEVEL = GameLogLevels.info;
 let self: Game;
-let gameLoopInterval: NodeJS.Timer;
+let gameLoopInterval: ReturnType<typeof setTimeout>;
 
 export enum GameMouseButtons {
   unknown, left, right, middle, back, forward
@@ -112,7 +112,7 @@ export default abstract class Game {
   logger: GameLog;
 
   constructor(config: GameConfig, state: any) {
-    this.instanceID = Math.round(Math.random()*1000)
+    this.instanceID = Math.round(Math.random() * 1000)
     this.logger = new GameLog(this, LOG_LEVEL);
     this.logger.info('Initializing game instance...');
     this.state = state;
@@ -123,7 +123,7 @@ export default abstract class Game {
     this.sounds = new SoundMixer(this);
     this.sprites = new SpriteManager(this);
     self = this;
-  };
+  }
 
   abstract onReady(): void;
   abstract onDisengaged(): void;
@@ -198,12 +198,12 @@ export default abstract class Game {
   onMouseUp?(e: GameMouseEvent) { }
 }
 
-export function GameElement(game: Game): JSX.Element {
+export function GameElement(game: Game): ReactElement {
   useEffect(() => {
-    game.onComponentMount(); 
+    game.onComponentMount();
     return () => {
       if (game.onComponentUnmount) game.onComponentUnmount();
-    } 
+    }
   });
 
   return (

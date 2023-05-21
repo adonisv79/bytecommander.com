@@ -82,15 +82,15 @@ export default function Movies() {
         </div>
         <PageNavigation itemsPerPage={10}
           currentPage={currentPage} resultCount={resultCount}
-          onNavigation={onNavigation}/>
+          onNavigation={onNavigation} />
         <SearchResult result={results}
           onItemSelected={onCardSelected} />
         <PageNavigation itemsPerPage={10}
           currentPage={currentPage} resultCount={resultCount}
-          onNavigation={onNavigation}/>
+          onNavigation={onNavigation} />
       </div>
       <MovieInfo visible={infoDialogVisibility} data={movieData}
         onDialogClose={() => { setInfoDialogVisibility(false) }} />
     </div>
   )
-} 
+}

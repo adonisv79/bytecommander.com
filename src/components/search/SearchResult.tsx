@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import SearchResultCard from './SearchResultCard';
 
 const defaultPosterURI = "/images/no-image-icon.png";
@@ -13,7 +14,7 @@ export default function SearchResult({ result, onItemSelected }: SearchResultPro
     onItemSelected(id);
   }
 
-  let cards: JSX.Element[] = []
+  let cards: ReactElement[] = []
   if (result?.length > 0) {
     cards = result.map((m: any) => {
       return <SearchResultCard key={m.imdbID}

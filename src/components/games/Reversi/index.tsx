@@ -10,13 +10,13 @@ interface SavedState {
   whiteScore: number,
   blackScore: number,
   board_tiles: number[][],
-};
+}
 
 interface GameSession {
   logs: string[],
   gameHistoryIndex: number,
   gameHistory: SavedState[]
-};
+}
 
 function generateNewGameSession() {
   const newSession: GameSession = {

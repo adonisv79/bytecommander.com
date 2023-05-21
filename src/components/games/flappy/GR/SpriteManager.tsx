@@ -21,7 +21,7 @@ interface SpriteConfig {
     y: number,
   },
   scale?: number,
-};
+}
 
 const DEFAULT_CONFIG = {
   source: '',

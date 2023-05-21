@@ -8,6 +8,7 @@ import Road from './Elements/Road';
 import Glider from './Elements/Glider';
 import Watermark from './Elements/Watermark';
 import Coin from './Elements/Coin';
+import { ReactElement } from 'react';
 
 let self: FlappyGame;
 let sky: Sky;
@@ -39,7 +40,7 @@ export default class FlappyGame extends Game {
       updateLapse: 0,
       mouseButtonMsg: 'None',
     });
-    
+
     this.sounds.addSource('jump', '/sounds/games/flappy/jump.mp3')
     this.sounds.addSource('bgmusic', '/sounds/games/flappy/linamnam_ulam.mp3')
     this.fonts.add('notice', {
@@ -114,9 +115,9 @@ export default class FlappyGame extends Game {
         self.viewport.drawText(`Frame: ${sysPerf.frameNumber}/${this.config.viewport.fps}`, { x: 260, y: 240 });
       }
 
-      self.viewport.drawText(`SCORE: ${ self.State.score}`, { x: 10, y: 10 }, 'score');
-      self.viewport.drawText(`COMBO: ${ self.State.combo}`, { x: 210, y: 10 }, 'combo');
-      self.viewport.drawText(`BONUS: +${ self.State.comboBonus}`, { x: 210, y: 30 }, 'combo');
+      self.viewport.drawText(`SCORE: ${self.State.score}`, { x: 10, y: 10 }, 'score');
+      self.viewport.drawText(`COMBO: ${self.State.combo}`, { x: 210, y: 10 }, 'combo');
+      self.viewport.drawText(`BONUS: +${self.State.comboBonus}`, { x: 210, y: 30 }, 'combo');
       if (!this.state.isPlaying) {
         self.viewport.drawText('Touch screen', { x: 80, y: 120 }, 'notice');
         self.viewport.drawText('to start...', { x: 110, y: 150 }, 'notice');
@@ -134,7 +135,7 @@ export default class FlappyGame extends Game {
   }
 }
 
-export function FlappyBee (): JSX.Element {
+export function FlappyBee(): ReactElement {
   const game = new FlappyGame()
   return GameElement(game);
 }

@@ -1,6 +1,8 @@
+import { ReactElement } from "react";
+
 interface NavigationItem {
   link: string,
-  content: JSX.Element,
+  content: ReactElement,
   newTab?: boolean,
 }
 
@@ -9,15 +11,15 @@ interface NavigationBarProps {
 }
 
 export default function NavigationBar({ config }: NavigationBarProps) {
-  const links:any = [];
+  const links: any = [];
   config.forEach(e => {
-      links.push(
-        <a href={e.link} 
-          className="m-5 text-4xl text-gray-200 hover:text-yellow-500"
-          target={e.newTab? "_blank": "_self"}>
-          {e.content}
-        </a>
-      )
+    links.push(
+      <a href={e.link}
+        className="m-5 text-4xl text-gray-200 hover:text-yellow-500"
+        target={e.newTab ? "_blank" : "_self"}>
+        {e.content}
+      </a>
+    )
   });
 
   return <nav className="">
