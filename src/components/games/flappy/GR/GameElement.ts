@@ -21,7 +21,7 @@ const DEFAULT_CONFIG: GameElementConfig = {
   size: { width: 10, height: 10, scale: 1 },
 };
 
-export function generateConfig (): GameElementConfig {
+export function generateConfig(): GameElementConfig {
   return DEFAULT_CONFIG;
 }
 
@@ -77,6 +77,6 @@ export default abstract class GameElement {
   // }
 
   abstract onUpdate(game: Game, lapse: number): void;
-  
+
   abstract onDraw(game: Game, lapse: number): void;
 }

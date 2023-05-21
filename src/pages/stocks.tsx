@@ -4,7 +4,7 @@ import Head from "next/head"
 export default function StocksPage() {
   return <div>
     <Head>
-    https://www.barrons.com
+      https://www.barrons.com
     </Head>
     <StockViewer />
   </div>

@@ -50,7 +50,7 @@ export default function MovieInfoPopup({ data, visible, onDialogClose }: MovieIn
       console.log('fading in')
       setFadeIn(true);
     }
-  },[data]);
+  }, [data]);
 
   function onMovieDialogClose() {
     setFadeIn(false);
@@ -62,7 +62,7 @@ export default function MovieInfoPopup({ data, visible, onDialogClose }: MovieIn
       <img src="/images/loading2.gif" />
     </div>
     <div id="modal-container" className={`transition-opacity duration-[2000ms] ease-out 
-      ${ fadeIn ? 'visible opacity-100' : 'invisible opacity-0'}
+      ${fadeIn ? 'visible opacity-100' : 'invisible opacity-0'}
       border m-2 inline-grid p-3 max-w-5xl
       rounded-2xl shadow-lg shadow-white bg-slate-900
       grid-cols-1 sm:grid-cols-2 md:grid-cols-3`}>
@@ -78,7 +78,7 @@ export default function MovieInfoPopup({ data, visible, onDialogClose }: MovieIn
           col-span-1 sm:col-span-2'>
         <div className='mx-2'>
           <div>IMDB Rating</div>
-          <div className='text-sm text-white'>{toHTMLText(data?.imdbRating)}<br/>({toHTMLText(data?.imdbVotes)})</div>
+          <div className='text-sm text-white'>{toHTMLText(data?.imdbRating)}<br />({toHTMLText(data?.imdbVotes)})</div>
         </div>
         <div className='mx-2'>
           <div>Metascore</div>
@@ -94,7 +94,7 @@ export default function MovieInfoPopup({ data, visible, onDialogClose }: MovieIn
         })}
       </div>
 
- 
+
       <div className='m-1 bg-black justify-self-center align-middle 
         col-span-1'>
         <img className='rounded-md' alt={""} src={data?.Poster} />
@@ -111,7 +111,7 @@ export default function MovieInfoPopup({ data, visible, onDialogClose }: MovieIn
         <p>{toHTMLText(data?.Director)}</p>
         <h5 className='mt-2' >Written by:</h5>
         <p>{toHTMLText(data?.Writer)}</p>
-      </div> 
+      </div>
       <div className='col-span-1 sm:col-span-2 md:col-span-3'>
         Awards: {toHTMLText(data?.Awards)} - Box Office: {toHTMLText(data?.BoxOffice)}
       </div>

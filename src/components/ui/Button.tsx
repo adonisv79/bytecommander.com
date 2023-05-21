@@ -1,13 +1,15 @@
+import { ReactElement } from "react";
+
 interface ButtonProps {
   disabled?: boolean,
   onClick?: Function,
-  children?: React.ReactNode;
+  children?: any;
 }
 
 export default function Button(props: ButtonProps) {
   return <button
     disabled={props.disabled}
-    onClick={()=>{
+    onClick={() => {
       if (props.onClick) props.onClick();
     }}
     className="

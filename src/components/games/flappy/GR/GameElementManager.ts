@@ -3,7 +3,7 @@ import GameElement from './GameElement';
 
 export default class GameElementManager {
   private game: Game;
-  private elements: {[key: string]: GameElement}
+  private elements: { [key: string]: GameElement }
   private elementIndex: GameElement[];
 
   constructor(game: Game) {
@@ -36,7 +36,7 @@ export default class GameElementManager {
     this.game.viewport.clear();
     for (let i = 0; i < this.elementIndex.length; i += 1) {
       if (this.elementIndex[i].onDraw && typeof this.elementIndex[i].onDraw === 'function') {
-        this.elementIndex[i].onDraw(this.game ,lapse);
+        this.elementIndex[i].onDraw(this.game, lapse);
       }
     }
   }

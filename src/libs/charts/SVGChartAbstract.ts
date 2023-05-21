@@ -84,7 +84,7 @@
 //       })
 //       .attr('width', Math.ceil(config.render.itemWidth / 8) || 1)
 //       .attr('stroke', config.stroke.color)
-//       .attr('stroke-width', config.stroke.width)
+//       .attr('strokeWidth', config.stroke.width)
 //       .attr('stroke-opacity', config.stroke.opacity)
 //       .attr('transform', (d, i) => {
 //         const translate = [(config.render.itemWidth * i) + config.render.offsetLeft, config.render.offsetTop];

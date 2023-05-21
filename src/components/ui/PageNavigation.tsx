@@ -1,3 +1,5 @@
+import { ReactElement } from "react";
+
 export function NavigationButton({ isCurrent, value, text, tooltip, onNavigation }: any) {
   return <span title={onNavigation ? tooltip : null} className={`inline-block border m-1 p-1 h-8 w-8 min-w-fit cursor-pointer
     ${onNavigation && "hover:bg-yellow-600"} 
@@ -18,9 +20,9 @@ export interface PageNavigationProps {
 
 export default function PageNavigation({ itemsPerPage, currentPage, resultCount, onNavigation }: PageNavigationProps) {
   const MAX_PAGE_LINKS = 7;
-  const links: JSX.Element[] = []
-  const navLeft: JSX.Element[] = []
-  const navRight: JSX.Element[] = []
+  const links: ReactElement[] = []
+  const navLeft: ReactElement[] = []
+  const navRight: ReactElement[] = []
   const maxPages: number = Math.ceil(resultCount / itemsPerPage)
 
   function getToolTipText(targetPage: number) {

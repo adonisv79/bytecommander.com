@@ -30,6 +30,7 @@ export default function MainFooter() {
         <li><Link href="/youtube">Youtube Videos</Link></li>
         <li><Link href="/ui/tabpanel">CustomComp: TabPanel</Link></li>
         <li><Link href="/ui/popup">CustomComp: Popup/Modal</Link></li>
+        <li><Link href="/pos">Experiments: POS UI Sample</Link></li>
         <li><Link href="http://mypinoy.bytecommander.com/" target='_blank'>MyPinoy Network</Link></li>
         <li><Link href="http://panda-appliances.com/" target='_blank'>Panda Appliances</Link></li>
         <li><Link href="https://github.com/adonisv79?tab=repositories" target='_blank'>Open Source Projects</Link></li>

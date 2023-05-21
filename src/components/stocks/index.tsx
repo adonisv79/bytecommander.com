@@ -5,21 +5,16 @@ interface StockInfoProps {
   data: any
 }
 
-
-interface StockInfoProps {
-  data: any
-}
-
 function CompanyDescriptionCard({ data = {} }: StockInfoProps) {
   return <div>
     <h2>{data.title}</h2>
-      {
-        // data.description.map((desc: string, i: number) => {
-        //   return (<p key={(`desc${i}`)}>{desc}</p>)
-        // })
-      }
-      <h3>People</h3>
-      {/* <h5>Boardmembers:</h5>
+    {
+      // data.description.map((desc: string, i: number) => {
+      //   return (<p key={(`desc${i}`)}>{desc}</p>)
+      // })
+    }
+    <h3>People</h3>
+    {/* <h5>Boardmembers:</h5>
       <ul>
         {data.peopleCard.boardMembers.map((o: any) => {
           return <li key={o.id}>{o.fullName} ({o.jobTitle})</li>
@@ -30,7 +25,7 @@ function CompanyDescriptionCard({ data = {} }: StockInfoProps) {
         {data.peopleCard.executives.map((o: any) => {
           return <li key={o.id}>{o.fullName} ({o.jobTitle})</li>
         })} */}
-      {/* </ul> */}
+    {/* </ul> */}
   </div>
 }
 
@@ -41,7 +36,7 @@ function StockInfo({ data }: StockInfoProps) {
   }
 
   return <div>
-    <CompanyDescriptionCard data={data.CompanyDescriptionCard } />
+    <CompanyDescriptionCard data={data.CompanyDescriptionCard} />
   </div>
 }
 

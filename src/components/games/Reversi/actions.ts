@@ -30,6 +30,7 @@ function captureDirection(
   let captureCount = 0;
   let x = startX + dirX;
   let y = startY + dirY;
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     const action = validateCaptureChain(boardTiles, x, y,
       player, captureCount, flipOpponents);

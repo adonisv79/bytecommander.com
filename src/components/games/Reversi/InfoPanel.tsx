@@ -4,7 +4,7 @@ import Button from '../../ui/Button';
 
 interface GameLogProps {
   logs: string[];
-};
+}
 
 /**
  * Renders the GameLog Text Area element

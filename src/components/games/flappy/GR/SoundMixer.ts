@@ -1,4 +1,4 @@
-import Game from "./Game";;
+import Game from "./Game";
 
 export default class SoundMixer {
   game: Game;
@@ -25,7 +25,7 @@ export default class SoundMixer {
       if (isNaN(this.channels[i].duration)
         || this.channels[i].ended
         || (this.channels[i].duration >= 0 && this.channels[i].paused)) {
-  
+
         this.game.logger.debug(`Activated audio channel ${i}`)
         return this.channels[i];
       }
