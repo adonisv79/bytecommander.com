@@ -60,5 +60,19 @@ footer a {
 .fade {
   transition: visibility, opacity 3s;
   visibility: visible;
-  opacity:1;
+  opacity: 1;
+}
+
+th,
+td {
+  border: 1px solid;
+  padding: 2px;
+}
+
+ul.disc {
+  @apply list-disc pl-6;
+}
+
+input {
+  background-color: darkgoldenrod;
 }

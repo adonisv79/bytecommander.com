@@ -104,6 +104,7 @@ export default function Home() {
         <Image className='object-contain m-5' src="images/techlogos/csharp.png" alt="C#" width={150} height={1} />
         <Image className='object-contain m-5' src="images/techlogos/jira.png" alt="Jira" width={150} height={1} />
         <Image className='object-contain m-5' src="images/techlogos/gworkspace.jpg" alt="Google Workspace" width={150} height={1} />
+        <Image className='object-contain m-5' src="images/techlogos/github_actions.png" alt="Github Actions" width={150} height={1} />
         <Image className='object-contain m-5' src="images/techlogos/circleci.png" alt="CircleCI" width={150} height={1} />
         <Image className='object-contain m-5' src="images/techlogos/postman.png" alt="PostMan" width={150} height={1} />
         <Image className='object-contain m-5' src="images/techlogos/gimp.png" alt="Gimp" width={150} height={1} />

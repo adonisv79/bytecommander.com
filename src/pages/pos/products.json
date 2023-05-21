@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1001",
+    "name": "apple",
+    "price": 50.00
+  },
+  {
+    "id": "1002",
+    "name": "orange",
+    "price": 40.00
+  },
+  {
+    "id": "1003",
+    "name": "banana",
+    "price": 10.00
+  },
+  {
+    "id": "1004",
+    "name": "mango",
+    "price": 65.00
+  },
+  {
+    "id": "1005",
+    "name": "pear",
+    "price": 80.00
+  },
+  {
+    "id": "1006",
+    "name": "kiwi",
+    "price": 75.00
+  },
+  {
+    "id": "1007",
+    "name": "grapefruit",
+    "price": 120.00
+  },
+  {
+    "id": "1008",
+    "name": "pineapple",
+    "price": 90.00
+  }
+]

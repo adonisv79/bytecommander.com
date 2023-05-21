@@ -7,12 +7,17 @@
 This project serves as my base website to showcase my profile, work and experience in my career as a software engineer, tech lead, project and engineering manager.
 
 ## Bytecommander.com
+
 This site is also hosted in http://www.bytecommander.com
-* Framework - NextJS + React
-* Language(s) - Typescript, TailwindCss
+* Frameworks - NextJS + React + Tailwind
+* Language(s) - Typescript, CSS3, HTML5
+* Charts - D3
 * Icons - from https://heroicons.com/
+* CICD - Github Actions/Workflow 
 
 ## History
+
+* 2023-05 - Applied Github Actions and ditched CircleCI. Always better to utilize the same tools than create another senseless frnkenstein project with different technologies. Heavily worked on components using Tailwind as well ditching our goal of relearning Material UI.
 
 * 2023-04 - We have moved this codebase to utilize NextJS 13. With our interest in react more than Vue or Angular and needing a better way to do react with SEO, Next.JS seems to be the best way forward. We are also supposed to utilize Material UI as it was before but it seems NextJS (though compatible with material) ships with Tailwind as recommendation. We can use them side by side but why complicate things??? Lets learn the recommendations for this framework before jumping into more frankenstein experiments like before.
 

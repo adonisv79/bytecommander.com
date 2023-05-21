@@ -1,5 +1,5 @@
 import VideoSearcher from '../components/search';
 
-export default function MoviesPage () {
+export default function MoviesPage() {
   return <VideoSearcher />
 }
