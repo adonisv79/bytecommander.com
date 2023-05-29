@@ -1,13 +1,11 @@
-import Game from '../GR/Game';
-import GameElement from '../GR/GameElement';
+import { Game, GameElement } from "game-reactor/dist";
 
 export default class Watermark extends GameElement {
   constructor(game: Game) {
-    super(game, {
+    super(game.Logger, {
       name: 'watermark',
       sprite: 'watermark', // add on component mount
-      pos: { x: 250, y: 190 },
-      state: {},
+      pos: { x: 250, y: 190 }
     });
   }
 
@@ -16,6 +14,6 @@ export default class Watermark extends GameElement {
   }
 
   onDraw(game: Game) {
-    game.viewport.drawElement(this);
+    game.Viewport.drawElement(this);
   }
 }

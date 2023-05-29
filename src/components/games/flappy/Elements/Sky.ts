@@ -1,16 +1,10 @@
-import Game from '../GR/Game';
-import GameElement from '../GR/GameElement';
+import { Game, GameElement } from "game-reactor/dist";
 
 export default class Sky extends GameElement {
   constructor(game: Game) {
-    super(game, {
+    super(game.Logger, {
       name: 'sky-bg',
-      sprite: 'background-sky',
-      state: {},
-      pos: {
-        x: 0,
-        y: 0,
-      }
+      sprite: 'background-sky'
     });
   }
 
@@ -19,6 +13,6 @@ export default class Sky extends GameElement {
   }
 
   onDraw(game: Game) {
-    game.viewport.drawElement(this);
+    game.Viewport.drawElement(this);
   }
 }

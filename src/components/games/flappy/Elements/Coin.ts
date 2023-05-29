@@ -1,11 +1,10 @@
-import Game from '../GR/Game';
-import CollisionBox from '../GR/CollisionBox';
-import GameElement from '../GR/GameElement';
-import CollisionSets from '../GR/CollisionSets';
+import {
+  CollisionBox, CollisionSets, Game, GameElement
+} from "game-reactor/dist";
 
 export default class Coin extends GameElement {
   constructor(game: Game) {
-    super(game, {
+    super(game.Logger, {
       name: 'coin',
       sprite: 'coin',
       animations: {
@@ -15,52 +14,55 @@ export default class Coin extends GameElement {
           frames: [
             {
               sprite: 'coin1',
-              delay: 80,
+              delay: 250,
             },
             {
               sprite: 'coin2',
-              delay: 80,
+              delay: 250,
             },
             {
               sprite: 'coin3',
-              delay: 80,
+              delay: 250,
             },
             {
               sprite: 'coin4',
-              delay: 80,
+              delay: 250,
             },
           ],
         },
       },
       pos: { x: -40, y: 90 },
-      state: {
-        xVelocity: 300,
-        enabled: true,
-        isMissed: false,
-      },
+    }, {
+      xVelocity: 150,
+      enabled: true,
+      isMissed: false,
     });
-    game.sprites.addSprite('coin1', 'coin', {
+
+    game.Sprites.addSprite('coin1', 'coin', {
       source: 'coin',
       spriteCoordinates: {
         x: 0, y: 0, width: 40, height: 40,
       },
       renderOffset: { x: 0, y: 0 },
     });
-    game.sprites.addSprite('coin2', 'coin', {
+
+    game.Sprites.addSprite('coin2', 'coin', {
       source: 'coin',
       spriteCoordinates: {
         x: 40, y: 0, width: 30, height: 40,
       },
       renderOffset: { x: 3, y: 0 },
     });
-    game.sprites.addSprite('coin3', 'coin', {
+
+    game.Sprites.addSprite('coin3', 'coin', {
       source: 'coin',
       spriteCoordinates: {
         x: 70, y: 0, width: 20, height: 40,
       },
       renderOffset: { x: 7, y: 0 },
     });
-    game.sprites.addSprite('coin4', 'coin', {
+
+    game.Sprites.addSprite('coin4', 'coin', {
       source: 'coin',
       spriteCoordinates: {
         x: 90, y: 0, width: 30, height: 40,
@@ -86,25 +88,25 @@ export default class Coin extends GameElement {
     }));
   }
 
-  onUpdate(game: Game, lapse: number) {
-    this.Config.pos.x -= ((lapse / 1000) * this.Config.state.xVelocity);
-    if (this.Config.pos.x < 20 && this.Config.state.enabled && !this.Config.state.isMissed) {
-      this.Config.state.isMissed = true;
+  onUpdate(game: Game, timeDelta: number) {
+    this.Config.pos!.x -= this.State.xVelocity * timeDelta;
+    if (this.Config.pos!.x < 20 && this.State.enabled && !this.State.isMissed) {
+      this.State.isMissed = true;
       game.State.combo = 0;
       game.State.comboBonus = 0;
     }
-    if (this.Config.pos.x <= -50) {
-      this.Config.state.isMissed = false;
-      this.Config.state.enabled = true;
-      this.Config.pos.x = 400;
-      this.Config.pos.y = 40 + (Math.ceil(Math.random() * 4) * 35);
+    if (this.Config.pos!.x <= -50) {
+      this.State.isMissed = false;
+      this.State.enabled = true;
+      this.Config.pos!.x = 400;
+      this.Config.pos!.y = 40 + (Math.ceil(Math.random() * 4) * 35);
     }
   }
 
-  onDraw(game: Game, lapse: number) {
-    if (this.Config.state.enabled) {
+  onDraw(game: Game, timeDelta: number) {
+    if (this.State.enabled) {
       const a = this.Config.animations.idle;
-      a.currentLapse += lapse;
+      a.currentLapse += timeDelta * 1000;
       let currFrame = a.frames[a.currentFrameIndex];
       if (a.currentLapse > currFrame.delay) {
         a.currentLapse -= currFrame.delay;
@@ -114,28 +116,28 @@ export default class Coin extends GameElement {
         }
         currFrame = a.frames[a.currentFrameIndex];
       }
-      const spriteState = game.sprites.getSprite(currFrame.sprite);
-      const spriteSource = game.sprites.getSource(spriteState.source);
+      const spriteState = game.Sprites.getSprite(currFrame.sprite);
+      const spriteSource = game.Sprites.getSource(spriteState.source);
       if (spriteSource) {
-        game.viewport.CanvasRef2DCtx.drawImage(spriteSource,
+        game.Viewport.Canvas2DContext.drawImage(spriteSource,
           spriteState.spriteCoordinates.x,
           spriteState.spriteCoordinates.y,
           spriteState.spriteCoordinates.width,
           spriteState.spriteCoordinates.height,
-          this.Config.pos.x + spriteState.renderOffset.x,
-          this.Config.pos.y + spriteState.renderOffset.y,
+          this.Config.pos!.x + spriteState.renderOffset.x,
+          this.Config.pos!.y + spriteState.renderOffset.y,
           spriteState.spriteCoordinates.width,
           spriteState.spriteCoordinates.height);
       }
 
-      if (this.Config.state.isMissed) {
-        game.viewport.drawText('Miss!', { x: 20, y: this.Config.pos.y }, 'missed');
+      if (this.State.isMissed) {
+        game.Viewport.drawText('Miss!', { x: 20, y: this.Config.pos!.y }, game.Fonts.get('missed'));
       }
     }
   }
 
   reset() {
-    this.Config.pos.x = -50;
-    this.Config.state.enabled = true;
+    this.Config.pos!.x = -50;
+    this.State.enabled = true;
   }
 }
