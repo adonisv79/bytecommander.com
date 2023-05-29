@@ -1,17 +1,15 @@
-import CollisionBox from '../GR/CollisionBox';
-import CollisionSets from '../GR/CollisionSets';
-import Game from '../GR/Game';
-import GameElement from '../GR/GameElement';
+import {
+  CollisionBox, CollisionSets, Game, GameElement
+} from "game-reactor/dist";
 
 export default class Glider extends GameElement {
   constructor(game: Game) {
-    super(game, {
+    super(game.Logger, {
       name: 'glider',
       sprite: 'glider',
       pos: { x: -100, y: 0 },
-      state: {
-        xVelocity: 800,
-      },
+    }, {
+      xVelocity: 400,
     });
     this.Config.collisions = new CollisionSets();
     this.Config.collisions.Active = true;
@@ -38,19 +36,19 @@ export default class Glider extends GameElement {
     }));
   }
 
-  onUpdate(game: Game, lapse: number) {
-    this.Config.pos.x -= ((lapse / 1000) * this.Config.state.xVelocity);
-    if (this.Config.pos.x <= -150) {
-      this.Config.pos.x = 500 + Math.floor(Math.random() * 4) * 25;
-      this.Config.pos.y = Math.floor(Math.random() * 3) * 50;
+  onUpdate(game: Game, timeDelta: number) {
+    this.Config.pos!.x -= this.State.xVelocity * timeDelta;
+    if (this.Config.pos!.x <= -150) {
+      this.Config.pos!.x = 500 + Math.floor(Math.random() * 4) * 25;
+      this.Config.pos!.y = Math.floor(Math.random() * 3) * 50;
     }
   }
 
   onDraw(game: Game) {
-    game.viewport.drawElement(this);
+    game.Viewport.drawElement(this);
   }
 
   reset() {
-    this.Config.pos.x = -100;
+    this.Config.pos!.x = -100;
   }
 }

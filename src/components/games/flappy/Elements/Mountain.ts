@@ -1,26 +1,24 @@
-import Game from '../GR/Game';
-import GameElement from '../GR/GameElement';
+import { Game, GameElement } from "game-reactor/dist";
 
 export default class Mountain extends GameElement {
   constructor(game: Game) {
-    super(game, {
+    super(game.Logger, {
       name: 'mountain',
       sprite: 'mountain',
-      pos: { x: 0, y: 200 },
-      state: {
-        xVelocity: 150,
-      },
+      pos: { x: 0, y: 200 }
+    }, {
+      xVelocity: 75,
     });
   }
 
-  onUpdate(game: Game, lapse: number) {
-    this.Config.pos.x -= ((lapse / 1000) * this.Config.state.xVelocity);
-    if (this.Config.pos.x <= -150) {
-      this.Config.pos.x = 350;
+  onUpdate(game: Game, timeDelta: number) {
+    this.Config.pos!.x -= this.State.xVelocity * timeDelta;
+    if (this.Config.pos!.x <= -150) {
+      this.Config.pos!.x = 350;
     }
   }
 
   onDraw(game: Game) {
-    game.viewport.drawElement(this);
+    game.Viewport.drawElement(this);
   }
 }
