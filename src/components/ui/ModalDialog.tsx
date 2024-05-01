@@ -8,8 +8,8 @@ export interface ModalDialogProps extends PropsWithChildren {
 export default function ModalDialog({ visible, onDialogClose, children }: ModalDialogProps) {
   if (!visible) return <></>
 
-  return <div id="modalBG" className={`fixed z-10 left-0 top-0 w-full h-full
-      bg-black bg-opacity-80 overflow-auto`}>
+  return <div id="modalBG" className={`fixed flex flex-col justify-center z-10 left-0 top-0 w-full h-full
+      bg-black bg-opacity-80 overflow-auto `}>
     <div className="flex justify-center">
       <button onClick={() => { onDialogClose() }}>
         <span className="flex select-none mt-2 text-yellow-400">CLOSE
