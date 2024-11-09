@@ -81,7 +81,7 @@ input {
 
 @keyframes slide {
   from {
-    transform: translateX(69%);
+    transform: translateX(80.5%);
   }
   to {
     transform: translateX(-100%);
