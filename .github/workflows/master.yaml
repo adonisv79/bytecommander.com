@@ -28,7 +28,7 @@ jobs:
         run: npm run test
 
       - name: 🏗️ Exporting distributable files to output directory
-        run: npm run export
+        run: npm run build
     
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
