@@ -10,10 +10,9 @@ export default function MainFooter() {
         </svg>
         About Me
       </h3>
-      <p className='mb-4'>Welcome to my site! My name is Don and I have been working my whole life in various roles and fields relative to technology. I have been a SW Developer creating desktop and web apps, a Project Manager working on deliveries and as an Engineering Managemer and lead roles working with people menagement</p>
+      <p className='mb-4'>Welcome to my site! My name is Don and I have been working my whole life in various roles and fields relative to technology. I have been a SW Developer creating desktop and web apps, a Project Manager working on AUNZ region deliveries and as a Lead or Engineering Manager who works with people and teams</p>
       <p className='mb-4'>I love technology and thus also had the opportunity to work on multiple programing languages, tools and frameworks which has helped in my adaptability and understanding of various concepts, strategies, SDLC and design patterns</p>
-      <p className='mb-1'>Career-wise I am focused only on technology related fields especially if it involves people-management. I am always open to explore and learn from the best who also values the best people.</p>
-
+      <p className='mb-1'>Career-wise I am focused only on technology related leadership fields. I am always open to explore and learn from the best who also values the best people.</p>
     </div>
     <div id="portfolio" className='mt-8 text-center'>
       <h3>
