@@ -23,10 +23,25 @@ const { title, description = "Adonis Villamor - A traditional coder meets AI Pro
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 		
-		<!-- Open Graph / SEO -->
+		<!-- SEO / Crawling -->
+		<meta name="keywords" content="Adonis Villamor, 3EGames Development, AI Product Engineer, Full Stack Developer, React, Astro, NextJS, Node.js, High Concurrency, Parallel Programming, Game Development, Software Engineering, Bocarena, Battle of Crowns, Battle of Crowns Arena" />
+		<meta name="author" content="Adonis Villamor" />
+		<meta name="robots" content="index, follow, max-image-preview:large" />
+		<link rel="canonical" href={Astro.url.href} />
+		
+		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url.href} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL("/images/portfolio/bocarena-banner.png", Astro.url)} />
+		
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={Astro.url.href} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL("/images/portfolio/bocarena-banner.png", Astro.url)} />
 		
 		<title>{title}</title>
 	</head>
