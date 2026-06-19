@@ -1,0 +1,210 @@
+---
+// Achievements.astro
+const certifications = [
+  "Project Management Professional (PMP)",
+  "Google Cloud Certified - Cloud Digital Leader",
+  "Microsoft Certified Professional (MCPS)",
+  "MCTS: SharePoint 2010, Application Development",
+  "MCTS: SharePoint 2010, Configuration",
+  "Philippine Civil Service Professional"
+];
+
+const awards = [
+  "Highest SWC Exam Score for Java Algorithm Programming (Samsung Lab 2015)",
+  "GPMS 1 (Top 10% Best Employee) for 2 consecutive years (Samsung Lab 2013-2014)",
+  "Handpicked for handling the lab's first highest-complexity grade project (Samsung Lab 2013)"
+];
+
+const trainings = [
+  "Official Patent Foundation & Patent Search",
+  "Leadership, IPO Patent and Technical (C, Java, Linux)",
+  "Sharepoint FAST Search Server 2010",
+  "Fujitsu C# Training",
+  "Electric Bicycle Assembly Training"
+];
+
+const education = [
+  {
+    degree: "Master of Business Administration (M.B.A.)",
+    school: "De La Salle University",
+    year: "2015"
+  },
+  {
+    degree: "Bachelor of Science - Information Technology",
+    school: "Chiang Kai Shek College",
+    year: "1999 - 2004"
+  }
+];
+---
+
+<section class="achievements" id="achievements">
+  <div class="container">
+    <h2 class="section-title">Certificates & Achievements</h2>
+    
+    <div class="achievements-grid animate-slide-up delay-200">
+      
+      <!-- Certifications -->
+      <div class="glass-panel achievement-card">
+        <div class="card-header">
+          <span class="icon">🏆</span>
+          <h3>Certifications</h3>
+        </div>
+        <ul>
+          {certifications.map(cert => (
+            <li>{cert}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Awards -->
+      <div class="glass-panel achievement-card">
+        <div class="card-header">
+          <span class="icon">⭐</span>
+          <h3>Awards & Honors</h3>
+        </div>
+        <ul>
+          {awards.map(award => (
+            <li>{award}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Trainings -->
+      <div class="glass-panel achievement-card">
+        <div class="card-header">
+          <span class="icon">🚀</span>
+          <h3>Trainings</h3>
+        </div>
+        <ul>
+          {trainings.map(training => (
+            <li>{training}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Education -->
+      <div class="glass-panel achievement-card">
+        <div class="card-header">
+          <span class="icon">🎓</span>
+          <h3>Education</h3>
+        </div>
+        <div class="education-list">
+          {education.map(edu => (
+            <div class="education-item">
+              <h4>{edu.degree}</h4>
+              <p class="school">{edu.school}</p>
+              <p class="year">{edu.year}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .achievements {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  @media (min-width: 768px) {
+    .achievements-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .achievement-card {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  }
+
+  .achievement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.1);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: var(--spacing-sm);
+  }
+
+  .icon {
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.5));
+  }
+
+  h3 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 1.25rem;
+    letter-spacing: 0.5px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+
+  .education-item h4 {
+    margin: 0;
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .school {
+    margin: 4px 0;
+    color: var(--secondary-accent);
+    font-size: 0.9rem;
+  }
+
+  .year {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+</style>

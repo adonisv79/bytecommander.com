@@ -1,0 +1,119 @@
+---
+// TechStack.astro
+const recentTech = [
+  "TypeScript", "Node.js", "Fastify", "Prisma", "PostgreSQL", 
+  "Redis", "NestJS", "Docker", "React.js", "Next.js"
+];
+
+const legacyTech = [
+  "SailsJs", "Hapi.js", "AngularJS", "Bootstrap", 
+  "ASP.NET", "C#", "SharePoint 2010"
+];
+---
+
+<section class="tech-stack" id="tech-stack">
+  <div class="container">
+    <h2 class="section-title">Evolution of Tech</h2>
+    
+    <div class="tech-grid animate-slide-up delay-200">
+      
+      <div class="glass-panel tech-card modern">
+        <div class="card-header">
+          <h3>Recent & Core Stack</h3>
+          <p class="subtitle">The tools I use to build robust, modern solutions.</p>
+        </div>
+        <div class="tags">
+          {recentTech.map(tech => (
+            <span class="tag tag-primary">{tech}</span>
+          ))}
+        </div>
+      </div>
+
+      <div class="glass-panel tech-card legacy">
+        <div class="card-header">
+          <h3>Foundational Knowledge</h3>
+          <p class="subtitle">Technologies that built my engineering discipline over the years.</p>
+        </div>
+        <div class="tags">
+          {legacyTech.map(tech => (
+            <span class="tag tag-secondary">{tech}</span>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .tech-stack {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .tech-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  @media (min-width: 768px) {
+    .tech-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .tech-card {
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .tech-card.modern {
+    border-top: 4px solid var(--primary-accent);
+  }
+
+  .tech-card.legacy {
+    border-top: 4px solid var(--text-muted);
+  }
+
+  .card-header {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .card-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .tag {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .tag-primary {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--primary-accent);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+  }
+
+  .tag-secondary {
+    background: rgba(160, 170, 191, 0.1);
+    color: var(--text-muted);
+    border: 1px solid rgba(160, 170, 191, 0.2);
+  }
+</style>

@@ -1,0 +1,245 @@
+---
+// Projects.astro
+const projects = [
+  {
+    id: "bocarena",
+    title: "Bocarena",
+    description: "The latest project currently under development. A robust platform exploring modern tech integration and scalable architectures.",
+    link: "https://bocarena.com",
+    image: "/images/portfolio/bocarena-banner.png",
+    tags: ["Next-Gen", "Under Development", "Architecture"],
+    highlight: true
+  },
+  {
+    id: "flappy",
+    title: "Flappy Bird (Jollibee Edition)",
+    description: "A canvas-based game loop rendering a fun localized version of Flappy Bird with Jollibee graphics.",
+    link: "/games/flappy/",
+    image: "/images/portfolio/flappy-banner.png",
+    tags: ["Game Dev", "Canvas", "React"],
+    highlight: false
+  }
+];
+---
+
+<section class="projects" id="projects">
+  <div class="container">
+    <h2 class="section-title">Featured Portfolios</h2>
+    
+    <div class="projects-grid animate-slide-up delay-300">
+      {projects.map((project, index) => (
+        <a href={project.link !== "#" ? project.link : null} target={project.link !== "#" && project.link.startsWith('http') ? "_blank" : null} rel="noopener noreferrer" class={`glass-panel project-card ${project.highlight ? 'highlight-card' : ''}`}>
+          {project.highlight && <div class="badge">Latest</div>}
+          
+          {project.image && (
+            <div class="project-banner">
+              <img src={project.image} alt={project.title} class="banner-img" />
+            </div>
+          )}
+
+          <div class="card-content">
+            <h3 class="title">{project.title}</h3>
+            <p class="description">{project.description}</p>
+            <div class="tags">
+              {project.tags.map(tag => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            {project.link !== "#" && (
+              <div class="card-action">
+                <span class="link-icon">↗</span>
+              </div>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="github-more animate-slide-up delay-400">
+      <a href="https://github.com/adonisv79" target="_blank" rel="noopener noreferrer" class="github-button">
+        View more on my GitHub <span class="link-icon">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-banner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    max-height: 400px;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    transition: transform var(--transition-slow);
+  }
+
+  .project-card:hover .banner-img {
+    transform: scale(1.05);
+  }
+
+  @keyframes borderPulse {
+    0% { border-color: var(--primary-accent); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); }
+    33% { border-color: var(--secondary-accent); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+    66% { border-color: #ff3366; box-shadow: 0 0 15px rgba(255, 51, 102, 0.2); }
+    100% { border-color: var(--primary-accent); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); }
+  }
+
+  .project-card:hover {
+    border-color: var(--primary-accent);
+    animation: borderPulse 6s linear infinite;
+  }
+
+  .highlight-card {
+    border: 1px solid var(--secondary-accent);
+    animation: borderPulse 10s linear infinite;
+  }
+
+  .highlight-card:hover {
+    animation-duration: 4s;
+  }
+
+  .badge {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: var(--secondary-accent);
+    color: var(--bg-color);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+
+  .card-content {
+    flex-grow: 1;
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .title {
+    font-size: 1.4rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-main);
+  }
+
+  .project-card:hover .title {
+    color: var(--primary-accent);
+  }
+
+  .highlight-card:hover .title {
+    color: var(--secondary-accent);
+  }
+
+  .description {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .card-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+  }
+
+  .link-icon {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+
+  .project-card:hover .link-icon {
+    color: var(--primary-accent);
+    transform: translate(2px, -2px);
+  }
+
+  .highlight-card:hover .link-icon {
+    color: var(--secondary-accent);
+  }
+
+  .github-more {
+    margin-top: var(--spacing-xl);
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: rgba(22, 25, 31, 0.4);
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+  }
+
+  .github-more p {
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .github-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.1), rgba(212, 175, 55, 0.1));
+    border: 1px solid var(--primary-accent);
+    border-radius: 30px;
+    color: var(--text-main);
+    font-weight: 600;
+    transition: all var(--transition-normal);
+  }
+
+  .github-button:hover {
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.2), rgba(212, 175, 55, 0.2));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.2);
+  }
+</style>

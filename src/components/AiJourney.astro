@@ -1,0 +1,186 @@
+---
+// AiJourney.astro
+---
+
+<section class="ai-journey" id="ai-journey">
+  <div class="container">
+    <h2 class="section-title">The AI Journey</h2>
+    
+    <div class="glass-panel journey-content animate-slide-up delay-200">
+      <div class="narrative">
+        <p class="intro">
+          My relationship with AI started with deep skepticism. Like many seasoned engineers, I was critical of the noise. But that very skepticism led me to dive deep, and the deeper I went, the more it transformed my workflow.
+        </p>
+        
+        <div class="stack-showcase">
+          <div class="stack-item">
+            <span class="icon">🌌</span>
+            <h4>Antigravity</h4>
+            <p>Gemini 3.5</p>
+          </div>
+          <div class="stack-item">
+            <span class="icon">⚡</span>
+            <h4>Codex</h4>
+            <p>OpenAI 5.5</p>
+          </div>
+          <div class="stack-item">
+            <span class="icon">🧠</span>
+            <h4>ClaudeCode</h4>
+            <p>Opus 4.7</p>
+          </div>
+        </div>
+
+        <p class="outro">
+          Today, I don't just use cloud-based AI. I am heavily invested in new hardware to master self-hosted, local AI models. Running <strong>Ollama</strong> and <strong>Stable Diffusion</strong> on local rigs has become my latest frontier—giving me the privacy, speed, and deep understanding of LLM architecture necessary for next-generation engineering.
+        </p>
+      </div>
+      
+      <div class="visual-hardware">
+        <div class="chip">
+          <div class="chip-inner">AI Core</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ai-journey {
+    padding: var(--spacing-xl) 0;
+  }
+
+  .journey-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl);
+  }
+
+  @media (min-width: 992px) {
+    .journey-content {
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .intro, .outro {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .intro {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .outro {
+    margin-top: var(--spacing-lg);
+    border-left: 4px solid var(--secondary-accent);
+    padding-left: var(--spacing-md);
+  }
+
+  .outro strong {
+    color: var(--secondary-accent);
+  }
+
+  .stack-showcase {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+  }
+
+  .stack-item {
+    flex: 1;
+    min-width: 120px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 229, 255, 0.1);
+    border-radius: 12px;
+    padding: var(--spacing-md);
+    text-align: center;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+  }
+
+  .stack-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-accent);
+  }
+
+  .stack-item .icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .stack-item h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-main);
+  }
+
+  .stack-item p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .visual-hardware {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-lg);
+  }
+
+  .chip {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #2a2f3a 0%, #16191f 100%);
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 
+      0 0 0 2px #3a4150,
+      0 0 30px rgba(0, 229, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: breathing-glow 4s infinite alternate;
+  }
+
+  .chip::before {
+    content: '';
+    position: absolute;
+    top: -10px; left: 20px; right: 20px; bottom: -10px;
+    background: repeating-linear-gradient(90deg, transparent, transparent 10px, #3a4150 10px, #3a4150 15px);
+    z-index: -1;
+  }
+
+  .chip::after {
+    content: '';
+    position: absolute;
+    left: -10px; top: 20px; bottom: 20px; right: -10px;
+    background: repeating-linear-gradient(0deg, transparent, transparent 10px, #3a4150 10px, #3a4150 15px);
+    z-index: -1;
+  }
+
+  .chip-inner {
+    width: 100px;
+    height: 100px;
+    background: #0b0d10;
+    border: 1px solid var(--primary-accent);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    color: var(--primary-accent);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.2);
+  }
+
+  @keyframes breathing-glow {
+    0% { box-shadow: 0 0 0 2px #3a4150, 0 0 20px rgba(0, 229, 255, 0.05); }
+    100% { box-shadow: 0 0 0 2px #3a4150, 0 0 40px rgba(0, 229, 255, 0.3); }
+  }
+</style>

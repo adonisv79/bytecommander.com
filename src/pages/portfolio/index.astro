@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Projects from '../../components/Projects.astro';
+---
+
+<BaseLayout title="Portfolio | Adonis Villamor">
+  <div class="page-header container animate-fade-in delay-100">
+    <h1 class="page-title">My <span class="highlight">Portfolio</span></h1>
+    <p class="page-subtitle">A collection of recent work, game development, and architectural explorations.</p>
+  </div>
+  <Projects />
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-top: var(--spacing-xl);
+    text-align: center;
+  }
+  .page-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: var(--spacing-sm);
+  }
+  .highlight {
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>

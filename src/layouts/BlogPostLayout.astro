@@ -1,0 +1,76 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout title={frontmatter.title}>
+  <article class="blog-post container animate-slide-up delay-100">
+    <header class="post-header">
+      <div class="meta">
+        <span class="date">{new Date(frontmatter.pubDate).toLocaleDateString()}</span>
+        {frontmatter.tags && frontmatter.tags.map(tag => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+      <h1 class="title">{frontmatter.title}</h1>
+      {frontmatter.description && <p class="description">{frontmatter.description}</p>}
+    </header>
+    <div class="post-content">
+      <slot />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-post {
+    padding: var(--spacing-xl) 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .post-header {
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+  }
+  .meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+  }
+  .date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--primary-accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+  }
+  .title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--text-main);
+    margin-bottom: var(--spacing-md);
+  }
+  .description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+  .post-content {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+  .post-content :global(h2) {
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-accent);
+  }
+  .post-content :global(p) {
+    margin-bottom: var(--spacing-md);
+  }
+  .post-content :global(a) {
+    text-decoration: underline;
+  }
+</style>

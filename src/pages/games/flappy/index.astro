@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FlappyGameComponent from '../../../components/games/flappy/FlappyGame';
+---
+
+<BaseLayout title="Flappy Bird (Jollibee Edition) | Adonis Villamor">
+  <div class="container animate-fade-in delay-100" style="padding-top: var(--spacing-lg);">
+    <a href="/portfolio" class="back-link animate-slide-up">
+      <span class="back-arrow">←</span> Back to Portfolio
+    </a>
+
+    <h1 class="page-title">Flappy Bird <span class="highlight">Jollibee Edition</span></h1>
+    <p class="page-subtitle">A simple canvas-based game loop rendering a fun localized version of Flappy Bird.</p>
+    
+    <div class="game-container animate-slide-up delay-200">
+      <FlappyGameComponent client:only="react" />
+    </div>
+
+    <div class="engine-explanation animate-slide-up delay-300">
+      <h2>How It Works</h2>
+      <p>
+        This game is powered by <a href="https://github.com/3egames/game-reactor" target="_blank" rel="noopener noreferrer">game-reactor</a>, a lightweight, custom-built game development SDK designed natively for ReactJS. Rather than relying on heavy third-party gaming frameworks, it utilizes a pure HTML5 <code>&lt;canvas&gt;</code> rendering context to handle high-performance 2D operations.
+      </p>
+      <ul>
+        <li><strong>Deterministic Update & Render Loop:</strong> The engine completely decouples mathematical game logic from visual rendering. It continuously fires a highly optimized update loop that calculates object physics, gravity velocities, and hit-box collisions incrementally based on the target FPS timeline.</li>
+        <li><strong>Dynamic Sprite Sheet Rendering:</strong> Instead of bogging down memory with hundreds of individual image files, the SDK efficiently slices dynamic animation frames from tightly packed sprite sheets. During the render phase, it computes the exact pixel coordinates required for the current animation state and precisely paints them onto the canvas buffer in real-time.</li>
+        <li><strong>React Integration:</strong> By integrating seamlessly with React's component lifecycle, the game loop preserves native 60FPS performance within the canvas while allowing UI states and configurations to communicate fluidly across the application boundary.</li>
+      </ul>
+    </div>
+    
+    <div class="bottom-nav animate-slide-up delay-400">
+      <a href="/portfolio" class="button primary-btn">Explore More Projects</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--spacing-lg);
+    text-decoration: none;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+  }
+  .back-link:hover {
+    color: var(--primary-accent);
+    transform: translateX(-4px);
+  }
+  .back-arrow {
+    font-size: 1.2rem;
+  }
+
+  .bottom-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+  }
+  .primary-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    border-radius: 30px;
+    text-decoration: none;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  }
+  .primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 229, 255, 0.4);
+    color: var(--bg-color);
+  }
+
+  .page-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: var(--spacing-sm);
+  }
+  .highlight {
+    background: linear-gradient(90deg, var(--primary-accent), var(--secondary-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .page-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-xl);
+  }
+  .game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: rgba(22, 25, 31, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+  }
+
+  .engine-explanation {
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl) auto;
+    padding: var(--spacing-xl);
+    background: rgba(22, 25, 31, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+  }
+  .engine-explanation h2 {
+    font-size: 1.5rem;
+    color: var(--primary-accent);
+    margin-bottom: var(--spacing-md);
+  }
+  .engine-explanation p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-lg);
+  }
+  .engine-explanation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .engine-explanation li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .engine-explanation li:last-child {
+    margin-bottom: 0;
+  }
+  .engine-explanation li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--secondary-accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  .engine-explanation strong {
+    color: var(--text-main);
+  }
+  .engine-explanation a {
+    color: var(--primary-accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color var(--transition-fast);
+  }
+  .engine-explanation a:hover {
+    color: var(--secondary-accent);
+  }
+</style>
+
+<style is:global>
+  /* Hide the preloaded sprite images rendered by game-reactor */
+  #Flappy img {
+    display: none !important;
+  }
+  #Flappy canvas {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

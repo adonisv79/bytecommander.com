@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 130" width="340" height="130">
+  <!-- Exact reproduction of the geometric SOSa logo based on user upload -->
+  <g fill="none" stroke="#000000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <!-- S -->
+    <path d="M 80,45 A 30,30 0 0,0 20,45 C 20,65 80,65 80,85 A 30,30 0 0,1 20,85" />
+    
+    <!-- O -->
+    <path d="M 100,45 A 30,30 0 0,1 160,45 L 160,85 A 30,30 0 0,1 100,85 Z" />
+    
+    <!-- S -->
+    <path d="M 240,45 A 30,30 0 0,0 180,45 C 180,65 240,65 240,85 A 30,30 0 0,1 180,85" />
+    
+    <!-- a (inverted e) -->
+    <g transform="rotate(180, 290, 65)">
+      <path d="M 260,65 L 320,65 L 320,45 A 30,30 0 0,0 260,45 L 260,85 A 30,30 0 0,0 320,85" />
+    </g>
+  </g>
+</svg>

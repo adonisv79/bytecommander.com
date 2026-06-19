@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- 
+    3E-Electric Bikes Logo
+    Designed geometrically to match the uploaded reference.
+    Elements are colored #000000 so they invert to glowing white/cyan in the CSS pipeline.
+  -->
+
+  <!-- Outer ring -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="#000000" stroke-width="10" />
+  
+  <!-- Left letter: "3" (mirrored E) -->
+  <path d="M 97,55 
+           L 50,55 L 50,75 L 77,75 
+           L 77,90 L 50,90 L 50,110 L 77,110 
+           L 77,125 L 50,125 L 50,145 L 97,145 Z" 
+        fill="#000000" />
+  
+  <!-- Right letter: "E" -->
+  <path d="M 103,55 
+           L 150,55 L 150,75 L 123,75 
+           L 123,90 L 150,90 L 150,110 L 123,110 
+           L 123,125 L 150,125 L 150,145 L 103,145 Z" 
+        fill="#000000" />
+</svg>

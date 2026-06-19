@@ -1,0 +1,237 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Adonis Villamor - A traditional coder meets AI Product Engineer. Building high-concurrency systems and parallel programming with AI." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+		
+		<!-- Open Graph / SEO -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		
+		<title>{title}</title>
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container header-container">
+				<a href="/" class="logo">Adonis<span class="accent">V.</span></a>
+				<nav class="main-nav">
+					<ul>
+						<li><a href="/#experience">Experience</a></li>
+						<li><a href="/#tech-stack">Tech</a></li>
+						<li><a href="/portfolio">Portfolio</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+  <footer class="site-footer">
+    <div class="container footer-container">
+      
+      <div class="footer-contact">
+        <h4>Let's Connect</h4>
+        <p>For any project or work related needs, feel free to contact me at:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:adonisv79@gmail.com">adonisv79@gmail.com</a></li>
+          <li><strong>Mobile:</strong> <a href="tel:+639171005864">(+63 ) 917-1005864</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; Bytecommander™ (2011) is maintained and owned by Adonis Lee Villamor</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/adonisv79/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/adonisv79" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="http://bytecommander.com" target="_blank" rel="noopener noreferrer">ByteCommander</a>
+        </div>
+      </div>
+      
+    </div>
+  </footer>
+	</body>
+</html>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(11, 13, 16, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-md) 0;
+  }
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+  }
+
+  .logo .accent {
+    color: var(--primary-accent);
+  }
+
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-lg);
+    margin: 0;
+    padding: 0;
+  }
+
+  .main-nav a {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+  }
+
+  .main-nav a:hover {
+    color: var(--text-main);
+  }
+
+  .main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-accent);
+    transition: width var(--transition-fast);
+  }
+
+  .main-nav a:hover::after {
+    width: 100%;
+  }
+
+  main {
+    padding-top: 80px; /* offset for fixed header */
+    min-height: calc(100vh - 350px); /* enough to keep footer down */
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--border-color);
+    padding: var(--spacing-xl) 0 var(--spacing-lg) 0;
+    margin-top: auto; /* push to bottom */
+    background-color: rgba(11, 13, 16, 0.5);
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .footer-contact h4 {
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .footer-contact p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .footer-contact ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .footer-contact li {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+
+  .footer-contact a {
+    color: var(--primary-accent);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .footer-contact a:hover {
+    color: var(--secondary-accent);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: var(--spacing-md);
+  }
+
+  .footer-bottom p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+
+  @media (min-width: 768px) {
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .footer-contact ul {
+      flex-direction: row;
+      gap: var(--spacing-xl);
+    }
+  }
+</style>
