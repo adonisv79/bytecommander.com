@@ -2,13 +2,22 @@
 // Projects.astro
 const projects = [
   {
+    id: "crownbeat",
+    title: "BoC - CrownBeat",
+    description: "Project codename ムシカ (Mushika), a percussion rhythm game built around Battle of Crowns' in-game Crownbeat Radio and its officially accepted music.",
+    link: "https://music.bocarena.com/",
+    image: "/images/portfolio/crownbeat2.png",
+    tags: ["Rhythm Game", "Percussion", "Crownbeat Radio"],
+    highlight: true
+  },
+  {
     id: "bocarena",
     title: "Battle of Crowns Arena (Bocarena)",
     description: "Creator & Lead Developer. A next-generation gaming platform and robust architecture pushing the boundaries of Battle of Crowns.",
     link: "https://bocarena.com",
     image: "/images/portfolio/bocarena-banner.png",
     tags: ["Game Dev", "Next-Gen", "Architecture"],
-    highlight: true
+    highlight: false
   },
   {
     id: "flappy",
@@ -32,8 +41,8 @@ const projects = [
           {project.highlight && <div class="badge">Latest</div>}
           
           {project.image && (
-            <div class="project-banner">
-              <img src={project.image} alt={project.title} class="banner-img" />
+            <div class="project-media">
+              <img src={project.image} alt={project.title} class="portfolio-image" />
             </div>
           )}
 
@@ -90,25 +99,19 @@ const projects = [
     overflow: hidden;
   }
 
-  .project-banner {
+  .project-media {
     position: relative;
     width: 100%;
-    aspect-ratio: 16/9;
-    max-height: 400px;
     overflow: hidden;
+    background: #08051d;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .banner-img {
+  .portfolio-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
-    transition: transform var(--transition-slow);
-  }
-
-  .project-card:hover .banner-img {
-    transform: scale(1.05);
+    height: auto;
+    display: block;
+    transition: opacity var(--transition-normal);
   }
 
   @keyframes borderPulse {
